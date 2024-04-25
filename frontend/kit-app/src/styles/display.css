@@ -1,0 +1,31 @@
+/* JerseyDisplay.css */
+
+.jerseys {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .jerseys-section {
+    width: 45%;
+  }
+  
+  .jersey-item {
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .jersey-item img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.2s;
+  }
+  
+  .jersey-item img:hover {
+    transform: scale(1.05);
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+  

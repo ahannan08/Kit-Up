@@ -1,0 +1,47 @@
+.league-logo {
+  width: 50px;
+   /* Adjust the width as needed */
+  height: auto;
+}
+
+
+.clubs-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.info {
+  flex: 0 0 20%; /* Adjust the width of each club within a league section */
+  margin-bottom: 10px;
+}
+
+.logo-img img {
+  width: 150px; /* Adjust the width of the logo */
+  height: 150px; /* Fixed height for images */
+  object-fit: contain; /* Maintain aspect ratio */
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.club-name {
+  margin-top: auto; /* Push the club name to the bottom */
+  font-size: 16px; /* Increase font size */
+  font-weight: bold; /* Make text bold */
+  text-align: center;
+}
+
+.league-section {
+  background-color: #f1f1f1; /* Background color for league sections */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px; /* Increase title font size */
+  font-weight: bold; /* Make title bold */
+  text-align: center;
+  color: #333; /* Title text color */
+  background-color: #e7e7e7;
+}
