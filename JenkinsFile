@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Frontend') {
+            steps {
+                sh 'cd frontend/kit-up && npm install && npm run build'
+            }
+        }
+        stage('Build Backend') {
+            steps {
+                sh 'cd backend && npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'zip -r app.zip frontend/kit-up/ backend/'
+            }
+        }
+        stage('Upload to S3') {  // Separate stage for uploading to S3
+            steps {
+                script {
+                    def s3Bucket = "kitapp" // Replace with your S3 bucket name
+                    // Upload the package to S3
+                    sh "aws s3 cp app.zip s3://${s3Bucket}/app.zip --region us-east-1" // Specify the region if necessary
+                }
+            }
+        }
+        stage('Deploy to AWS') {
+            steps {
+                script {
+                    // Trigger deployment using CodeDeploy
+                    sh '''
+                    aws deploy create-deployment \
+                    --application-name jenkins_application \
+                    --deployment-group-name jenkins_group \
+                    --s3-location bucket=kitapp,key=app.zip,bundleType=zip --region us-east-1
+                    '''
+                }
+            }
+        }
+    }
+}
