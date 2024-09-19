@@ -469,7 +469,7 @@ const away_jer = [
     Image: ac2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 1000,
    
   },
   {  _id: "26",

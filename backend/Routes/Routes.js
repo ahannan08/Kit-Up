@@ -1,28 +1,33 @@
-import { Login , Register,addToCart, getCartItems, getOrders, purchase, removeFromCart } from "../Controllers/Controller.js";
+// import express from 'express';
+// import {
+//   addToCart,
+//   getCartItems,
+//   getOrders,
+//   purchase,
+//   removeFromCart,
+// } from '../Controllers/Controller.js';
+// import {Login,
+//   Register,} from "../Controllers/authController.js"
+// import { searchClub } from '../Controllers/searchController.js';
+// import { createPaymentIntent } from '../Controllers/paymentController.js';
 
-import express from "express"
+// const router = express.Router();
 
+// // Authentication routes
+// router.post('/register', Register);
+// router.post('/login', Login);
 
+// // Cart routes
+// router.post('/cart/add', addToCart);
+// router.get('/cart/:userId', getCartItems);
+// router.delete('/remove/:itemId', removeFromCart);
+// router.put('/purchase', purchase);
+// router.get('/cart/myorders/:userId', getOrders);
 
-const router = express.Router();
+// // Search route
+// router.get('/search', searchClub);
 
-router.post("/register", Register);
-router.post("/login", Login);
+// // Payment route
+// router.post('/create-payment-intent', createPaymentIntent);
 
-
-// routes/cart.js
-
-
-// Routes for adding, getting, and removing items from the cart
-router.post("/cart/add", addToCart);
-router.get("/cart/:userId", getCartItems);
-router.delete("/remove/:itemId", removeFromCart);
-//router.put("/cart/update/:itemId", updateCartItemQuantity); // New route for updating quantity
-router.put('/cart/purchase', purchase)
-router.get('/cart/myorders/:userId', getOrders)
-
-
-
-export default router; 
-
-
+// export default router;

@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+      mongodb:
+        container_name : mongo
+        image: mongo:latest
+        ports:
+          - "27017:27017"
+        volumes:
+          - mongo-data:/data/db
+
+
+      backend:
+        container_name: backend
+        build: ./backend
+        ports:
+          - "3009:3009"
+        depends_on:
+          - mongodb    
+        environment:
+          - MONGO_URL=mongodb://mongo:27017/kit-db
+
+
+      frontend:
+        container_name: frontend
+        build: ./frontend/kit-app
+        ports:
+          - "3000:3000"
+        depends_on:
+          - backend    
+
+volumes:
+      mongo-data:

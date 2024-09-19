@@ -1,0 +1,25 @@
+simplify the following code 
+
+cart.js
++fetchcart
++update quantity
+
+home.js
+->club.js 
++leagues data
++filter club
+
+-->jerseys
++detais-->
++addToCart
++GoToCart
+
+-->orders
+fetchOrders
+
+-->Payment
++payment intent
++update purchase
+
+
+--> data

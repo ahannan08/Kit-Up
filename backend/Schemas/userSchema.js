@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   balance: {
     type: Number,
-    default: 1500, // Set the default balance to 1400
+    default: 2500, 
   },
  
 });
