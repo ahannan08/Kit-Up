@@ -22,7 +22,8 @@ function App() {
  
   return (
     <div className="App">
-<Header  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}  searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+<Header  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}  searchTerm={searchTerm} 
+        setSearchTerm={setSearchTerm} />
       <Routes>
         <Route path ="/" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/home" element={<Home />}/>

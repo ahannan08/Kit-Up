@@ -1,68 +1,109 @@
 .cart-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.cart-item img {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-details h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: right;
+}
+
+.cart-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-actions button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-actions button:hover {
+  background-color: #0056b3;
+}
+
+.empty-cart-message {
+  font-size: 18px;
+  text-align: center;
+}
+
+.insufficient-balance {
+  color: red;
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 10px;
   }
-  
+
   .cart-item {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0;
   }
-  
+
   .cart-item img {
-    width: 100px;
-    height: auto;
-    margin-right: 20px;
+    width: 80px;
+    margin: 0 0 10px 0;
   }
-  
-  .cart-item-details {
-    flex-grow: 1;
-  }
-  
+
   .cart-item-details h3 {
-    margin: 0;
-    font-size: 18px;
+    font-size: 16px;
   }
-  
+
   .cart-item-details p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #666;
+    font-size: 13px;
   }
-  
+
   .cart-total {
-    margin-top: 20px;
-    font-size: 18px;
-    text-align: right;
-  }
-  
-  .cart-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .cart-actions button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .cart-actions button:hover {
-    background-color: #0056b3;
-  }
-  
-  .empty-cart-message {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
+    margin-top: 10px;
   }
-  
-  .insufficient-balance {
-    color: red;
+
+  .cart-actions {
+    justify-content: center;
   }
-  
+
+  .cart-actions button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+}
