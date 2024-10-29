@@ -16,16 +16,16 @@ import Checkout from "./components/payment/Checkout.js";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-
+  const [searchTerm, setSearchTerm] = useState(''); // Move searchTerm state here
+  const [filters, setFilters] = useState({ type: '', rating: 0, minPrice: 0, maxPrice: 1000 });
 
  
   return (
     <div className="App">
-<Header  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} onSearchTermChange={setSearchTerm} />
+<Header  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}  searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Routes>
         <Route path ="/" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route path="/home" element={<Home searchTerm={searchTerm}/>}/>
+        <Route path="/home" element={<Home />}/>
         <Route path ="/display/:club" element={<Display/>}/>
         <Route path ="/jersey-details" element={<Details/>}/>
         <Route path='/cart' element ={<Cart/>}/>

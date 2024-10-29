@@ -1,31 +1,59 @@
-/* results.css */
+/* ResultsPage.css */
 
-.results {
-    padding: 20px;
-  }
-  
-  .results h2 {
-    margin-bottom: 20px;
-  }
-  
-  .jersey-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    text-align: center;
-  }
-  
-  .jersey-item img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .jersey-item h3 {
-    margin: 10px 0;
-  }
-  
-  .jersey-item p {
-    margin: 5px 0;
-  }
-  
+/* Overall page styling */
+body {
+  background-color: #f4f4f4; /* Light gray background */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Font for the whole page */
+}
+
+/* Container for the filtered results */
+h2 {
+  text-align: center;
+  color: #333; /* Dark gray color for heading */
+  margin-top: 20px; /* Spacing above the heading */
+}
+
+.jerseys {
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  justify-content: center; /* Center items horizontally */
+  padding: 20px; /* Padding around the jersey items */
+}
+
+/* Individual jersey item styling */
+.jersey-item {
+  background-color: white; /* White background for each jersey item */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  margin: 10px; /* Spacing between items */
+  padding: 15px; /* Padding inside each jersey item */
+  width: 200px; /* Fixed width for each item */
+  text-align: center; /* Center text within the item */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s; /* Smooth transform on hover */
+}
+
+/* Image styling */
+.jersey-item img {
+  max-width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Slightly rounded corners for images */
+}
+
+/* Item hover effect */
+.jersey-item:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+/* Jersey details styling */
+.jersey-item h3 {
+  margin: 10px 0; /* Space around club name */
+  color: #007BFF; /* Blue color for club name */
+}
+
+.jersey-item p {
+  margin: 5px 0; /* Spacing between paragraphs */
+  color: #666; /* Gray color for other details */
+}

@@ -1,47 +1,114 @@
-.league-logo {
-  width: 50px;
-   /* Adjust the width as needed */
-  height: auto;
-}
-
-
-.clubs-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.info {
-  flex: 0 0 20%; /* Adjust the width of each club within a league section */
-  margin-bottom: 10px;
-}
-
-.logo-img img {
-  width: 150px; /* Adjust the width of the logo */
-  height: 150px; /* Fixed height for images */
-  object-fit: contain; /* Maintain aspect ratio */
-  margin-bottom: 5px;
-  cursor: pointer;
-}
-
-.club-name {
-  margin-top: auto; /* Push the club name to the bottom */
-  font-size: 16px; /* Increase font size */
-  font-weight: bold; /* Make text bold */
-  text-align: center;
-}
-
+/* League Section Styling */
 .league-section {
-  background-color: #f1f1f1; /* Background color for league sections */
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
+/* League Title Container */
 .title {
-  font-size: 24px; /* Increase title font size */
-  font-weight: bold; /* Make title bold */
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* League Logo Styling with Hover Effect */
+.league-logo {
+  width: 80px; /* Adjusted for consistency */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.league-logo:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* League Name Styling */
+.title-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  margin-left: 15px; /* Spacing between logo and text */
+}
+
+/* Club Row and Club Item Styling */
+.clubs-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Spacing between each club */
+}
+
+/* Individual Club Container */
+.info {
+  flex: 0 0 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Club Logo Styling */
+.logo-img img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.info:hover .logo-img img {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Reflection Effect on Club Logo Hover */
+.info:hover .logo-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  border-radius: 10px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Club Name Styling */
+.club-name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
   text-align: center;
-  color: #333; /* Title text color */
-  background-color: #e7e7e7;
+}
+
+/* Light Background Colors for Each League Section */
+.premier-league {
+  background-color: #e8f4ff; /* Light blue */
+}
+
+.seria-a {
+  background-color: #ffeef3; /* Light pink */
+}
+
+.ligue-1 {
+  background-color: #e5f7e5; /* Light green */
+}
+
+.la-liga {
+  background-color: #fff4e5; /* Light orange */
+}
+
+.bundesliga {
+  background-color: #f9e5ff; /* Light purple */
 }
