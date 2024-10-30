@@ -17,6 +17,8 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log("submit buttn hit")
+
     e.preventDefault();
 
     try {
