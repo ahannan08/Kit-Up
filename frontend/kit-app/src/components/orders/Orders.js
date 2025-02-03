@@ -9,7 +9,7 @@ const Orders = () => {
     const fetchOrders = async () => {
       try {
         const userId = localStorage.getItem('userId');
-        const response = await fetch(`http://localhost:3009/order/myorders/${userId}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/order/myorders/${userId}`);
         console.log("response:", response)
         if (response.ok) {
           const data = await response.json();

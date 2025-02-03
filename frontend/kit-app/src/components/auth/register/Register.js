@@ -10,7 +10,7 @@ const Register = () => {
     password: '',
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate()    
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -22,7 +22,8 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3009/auth/register', {
+      console.log(process.env.REACT_APP_API_URL);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

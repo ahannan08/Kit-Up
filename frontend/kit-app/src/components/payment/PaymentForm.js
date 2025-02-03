@@ -18,7 +18,7 @@ const PaymentForm = ({ totalAmount}) => {
   
     try {
       // Create a payment intent
-      const response = await fetch('http://localhost:3009/api/payment/create-payment-intent', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/payment/create-payment-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: totalAmount  }) // amount in cents
@@ -48,7 +48,7 @@ const PaymentForm = ({ totalAmount}) => {
       console.log("cart items in payment", cartItems)
       if (paymentIntent.status === 'succeeded') {
         // Prepare to send purchase data to the backend
-        const purchaseResponse = await fetch('http://localhost:3009/api/payment/purchase', {
+        const purchaseResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/payment/purchase`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

@@ -8,7 +8,7 @@ const useFetchCart = (userId) => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await fetch(`http://localhost:3009/api/cart/${userId}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${userId}`);
         if (response.ok) {
           const data = await response.json();
           const updatedItems = data.cartItems.map(item => ({
