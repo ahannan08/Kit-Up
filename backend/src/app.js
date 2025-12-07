@@ -5,6 +5,8 @@ import rateLimit from 'express-rate-limit';
 import authRoutes from './routes/auth.routes.js';
 import errorHandler from './middlewares/error.middleware.js';
 import productRoutes from "./routes/product.routes.js";
+import cartRoutes from "./routes/cart.routes.js";
+import wishlistRoutes from "./routes/wishlist.routes.js";
 
 const app = express();
 
@@ -24,6 +26,9 @@ app.use(limiter);
 // routes
 app.use('/api/auth', authRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/wishlist", wishlistRoutes);
+
 
 
 app.get('/', (req, res) => res.json({ ok: true, msg: 'Auth service' }));
