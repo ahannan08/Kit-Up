@@ -28,7 +28,7 @@ const EntityModal = ({ title, fields, initial, onClose, onSave }) => {
                 onChange={(e) => update(field.name, e.target.value)}
                 required={field.required}
               >
-                <option value="">Select…</option>
+                <option value="">{field.selectPlaceholder || 'Select…'}</option>
                 {field.options.map((opt) => (
                   <option key={opt.value} value={opt.value}>
                     {opt.label}

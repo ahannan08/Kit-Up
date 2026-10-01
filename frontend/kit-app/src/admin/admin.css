@@ -311,6 +311,60 @@
   font-size: 14px;
 }
 
+.ku-admin-page-head .ku-admin-lead {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--ku-muted);
+}
+
+.ku-admin-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ku-admin-filters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--ku-line);
+  border-radius: 999px;
+  background: var(--ku-surface);
+  color: var(--ku-ink-2);
+  font-family: var(--ku-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.ku-admin-filters button span {
+  min-width: 20px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--ku-surface-2);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ku-admin-filters button:hover {
+  border-color: var(--ku-ink);
+  color: var(--ku-ink);
+}
+
+.ku-admin-filters button.is-active {
+  background: var(--ku-ink);
+  border-color: var(--ku-ink);
+  color: #fff;
+}
+
+.ku-admin-filters button.is-active span {
+  background: rgba(255, 255, 255, 0.18);
+}
+
 /* Dashboard */
 .ku-admin-dashboard .ku-admin-lead {
   margin: 8px 0 0;
