@@ -1,103 +1,107 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 
 const Login = ({ setIsLoggedIn }) => {
-    // Accept setIsLoggedIn as a prop
-
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setError('');
   };
 
   const handleSubmit = async (e) => {
-    console.log("submit buttn hit")
     e.preventDefault();
+    setLoading(true);
+    setError('');
 
     try {
-      console.log("API URL:", process.env.REACT_APP_API_URL);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // If login is successful, extract and store the token and userId
         const { token, userId } = data.user;
-
-        // Store the token in local storage
         localStorage.setItem('authToken', token);
-        console.log('Token stored:', token);
-
-        // Save userId in local storage
         localStorage.setItem('userId', userId);
-        console.log('UserId stored:', userId);
-        console.log("Is setIsLoggedIn defined?", typeof setIsLoggedIn);
-
-        // Set isLoggedIn to true
-         // Update the state here
-
-        // Navigate to the home page
-        navigate('/home');
         setIsLoggedIn(true);
+        navigate('/home');
       } else {
-        // Handle unsuccessful login
-        alert(data.message);
+        setError(data.message || 'Login failed. Check your email and password.');
       }
-    } catch (error) {
-      console.error('Error during login:', error);
+    } catch (err) {
+      setError('Could not reach the server. Try again in a moment.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleRegisterClick = () => {
-    navigate('/register');
-  };
-
   return (
-    <div className="login-container">
-      <form id="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+    <main className="ku-auth-page">
+      <div className="ku-auth-shell">
+        <aside className="ku-auth-aside">
+          <Link to="/" className="ku-brand ku-brand--light">
+            <span className="ku-brand-mark">K</span>
+            <span>Kit-Up</span>
+          </Link>
+          <h1>Welcome back</h1>
+          <p>Sign in to browse kits, save your cart, and track orders across Europe&apos;s top leagues.</p>
+        </aside>
+
+        <div className="ku-auth-card-wrap">
+          <form className="ku-auth-card" onSubmit={handleSubmit}>
+            <h2>Log in</h2>
+            <p className="ku-auth-sub">Use the email and password from your account.</p>
+
+            {error && <p className="ku-auth-error" role="alert">{error}</p>}
+
+            <div className="ku-auth-field">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                autoComplete="email"
+                required
+              />
+            </div>
+
+            <div className="ku-auth-field">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="••••••••"
+                autoComplete="current-password"
+                required
+              />
+            </div>
+
+            <button type="submit" className="ku-btn ku-btn--primary ku-btn--block" disabled={loading}>
+              {loading ? 'Signing in…' : 'Sign in'}
+            </button>
+
+            <p className="ku-auth-foot">
+              New here? <Link to="/register">Create an account</Link>
+            </p>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        <button type="button" onClick={handleRegisterClick}>
-          Register
-        </button>
-      </form>
-    </div>
+      </div>
+    </main>
   );
 };
 

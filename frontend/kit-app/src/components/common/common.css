@@ -75,7 +75,8 @@
 
 .ku-jersey-media {
   position: relative;
-  aspect-ratio: 4 / 5;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1.12;
   overflow: hidden;
   background: radial-gradient(circle at 50% 35%, #ffffff 0%, var(--ku-surface-2) 75%);
 }
@@ -84,7 +85,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 18px;
+  padding: 14px 14px 8px;
   mix-blend-mode: multiply;
   transition: transform 0.7s var(--ku-ease);
 }

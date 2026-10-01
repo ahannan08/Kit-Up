@@ -75,10 +75,12 @@ const Club = ({ searchTerm = '', activeLeague = 'All', setActiveLeague, hideTabs
                     <span className="ku-club-crest">
                       <img src={club.Image} alt={`${club.club} crest`} loading="lazy" />
                     </span>
-                    <span className="ku-club-name">{club.club}</span>
-                    <span className="ku-club-meta">
-                      {kits} {kits === 1 ? 'kit' : 'kits'}
-                      <FontAwesomeIcon icon={faArrowRight} className="ku-club-arrow" />
+                    <span className="ku-club-text">
+                      <span className="ku-club-name">{club.club}</span>
+                      <span className="ku-club-meta">
+                        {kits} {kits === 1 ? 'kit' : 'kits'}
+                        <FontAwesomeIcon icon={faArrowRight} className="ku-club-arrow" />
+                      </span>
                     </span>
                   </button>
                 </Reveal>

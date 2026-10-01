@@ -104,14 +104,20 @@
   gap: 16px;
 }
 
+.ku-club-grid > .ku-reveal {
+  display: block;
+  height: 100%;
+}
+
 .ku-club-grid .ku-club-card {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 28px 16px 20px;
-  overflow: hidden;
+  min-height: 220px;
+  padding: 24px 16px 20px;
+  overflow: visible;
   border: 1px solid var(--ku-line);
   border-radius: var(--ku-radius);
   background: var(--ku-surface);
@@ -146,18 +152,32 @@
 
 .ku-club-crest {
   position: relative;
-  display: grid;
-  place-items: center;
-  width: 96px;
-  height: 96px;
-  margin-bottom: 16px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 0;
 }
 
 .ku-club-crest img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
   transition: transform 0.6s var(--ku-ease);
+}
+
+.ku-club-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin-top: 16px;
+  padding-top: 4px;
 }
 
 .ku-club-card:hover .ku-club-crest img {

@@ -1,23 +1,17 @@
-// components/Quantity.js
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const Quantity = ({ quantity, onQuantityChange }) => {
-  const handleIncrease = () => {
-    onQuantityChange(1); // Increase quantity by 1
-  };
-
-  const handleDecrease = () => {
-    onQuantityChange(-1); // Decrease quantity by 1
-  };
-
-  return (
-    <div className="cart-item-quantity">
-      Quantity: 
-      <button onClick={handleDecrease}>-</button>
-      {quantity}
-      <button onClick={handleIncrease}>+</button>
-    </div>
-  );
-};
+const Quantity = ({ quantity, onQuantityChange }) => (
+  <div className="ku-qty ku-qty--cart" aria-label="Quantity">
+    <button type="button" onClick={() => onQuantityChange(-1)} disabled={quantity <= 0} aria-label="Decrease">
+      <FontAwesomeIcon icon={faMinus} />
+    </button>
+    <span>{quantity}</span>
+    <button type="button" onClick={() => onQuantityChange(1)} aria-label="Increase">
+      <FontAwesomeIcon icon={faPlus} />
+    </button>
+  </div>
+);
 
 export default Quantity;

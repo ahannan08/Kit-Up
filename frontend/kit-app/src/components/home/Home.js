@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -30,6 +30,21 @@ const Home = ({ searchTerm = '' }) => {
   const location = useLocation();
   const [activeLeague, setActiveLeague] = useState(location.state?.league || 'All');
   const trackRef = useRef(null);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const updateCarouselScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (maxScroll <= 4) {
+      setCanScrollPrev(false);
+      setCanScrollNext(false);
+      return;
+    }
+    setCanScrollPrev(track.scrollLeft > 4);
+    setCanScrollNext(track.scrollLeft < maxScroll - 4);
+  }, []);
 
   useEffect(() => {
     if (location.state?.league) {
@@ -53,9 +68,24 @@ const Home = ({ searchTerm = '' }) => {
 
   const crests = useMemo(() => leagues.flatMap((league) => league.clubs), []);
 
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return undefined;
+    updateCarouselScroll();
+    track.addEventListener('scroll', updateCarouselScroll, { passive: true });
+    window.addEventListener('resize', updateCarouselScroll);
+    return () => {
+      track.removeEventListener('scroll', updateCarouselScroll);
+      window.removeEventListener('resize', updateCarouselScroll);
+    };
+  }, [topRated.length, updateCarouselScroll]);
+
   const scrollTrack = (direction) => {
     const track = trackRef.current;
-    if (track) track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: 'smooth' });
+    if (track) {
+      track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: 'smooth' });
+      window.setTimeout(updateCarouselScroll, 400);
+    }
   };
 
   if (searchTerm) {
@@ -140,10 +170,22 @@ const Home = ({ searchTerm = '' }) => {
             <h2 className="ku-section-title">Top rated kits</h2>
           </div>
           <div className="ku-carousel-nav">
-            <button type="button" className="ku-round-btn" onClick={() => scrollTrack(-1)} aria-label="Previous">
+            <button
+              type="button"
+              className="ku-round-btn"
+              onClick={() => scrollTrack(-1)}
+              disabled={!canScrollPrev}
+              aria-label="Previous"
+            >
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
-            <button type="button" className="ku-round-btn" onClick={() => scrollTrack(1)} aria-label="Next">
+            <button
+              type="button"
+              className="ku-round-btn"
+              onClick={() => scrollTrack(1)}
+              disabled={!canScrollNext}
+              aria-label="Next"
+            >
               <FontAwesomeIcon icon={faArrowRight} />
             </button>
           </div>

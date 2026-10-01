@@ -116,7 +116,7 @@ const Details = () => {
   };
 
   return (
-    <main className="ku-page">
+    <main className="ku-page ku-page--detail">
       <section className="ku-container ku-detail">
         <nav className="ku-breadcrumb ku-breadcrumb--dark" aria-label="Breadcrumb">
           <Link to="/home">Home</Link>
@@ -172,9 +172,7 @@ const Details = () => {
               </Link>
             )}
 
-            <h1>
-              {jersey.club} <span>{jersey.type} Jersey</span>
-            </h1>
+            <h1>{jersey.type} jersey</h1>
 
             <div className="ku-detail-rating">
               <Stars rating={jersey.rating} showValue />
@@ -183,10 +181,12 @@ const Details = () => {
 
             <div className="ku-detail-price">${jersey.price}</div>
 
-            <p className="ku-detail-desc">
-              The {jersey.club} {jersey.type.toLowerCase()} kit. Lightweight, breathable fabric with
-              the club crest on the chest, made for match days and everyday wear.
-            </p>
+            <ul className="ku-detail-specs">
+              <li><span>Kit</span>{jersey.type}</li>
+              <li><span>Club</span>{jersey.club}</li>
+              {clubInfo && <li><span>League</span>{clubInfo.league.name}</li>}
+              <li><span>Fabric</span>Quick-dry, breathable</li>
+            </ul>
 
             <div className="ku-detail-buy">
               <div className="ku-qty" aria-label="Quantity">
@@ -220,7 +220,7 @@ const Details = () => {
               </button>
             </div>
 
-            <Link to="/cart" className="ku-btn ku-btn--ghost ku-btn--block">View cart</Link>
+            <Link to="/cart" className="ku-btn ku-btn--ghost ku-btn--block ku-btn--compact">View cart</Link>
 
             <ul className="ku-detail-perks">
               <li><FontAwesomeIcon icon={faTruckFast} /> Fast dispatch</li>
@@ -228,24 +228,13 @@ const Details = () => {
               <li><FontAwesomeIcon icon={faLock} /> Secure Stripe checkout</li>
             </ul>
 
-            <div className="ku-accordion">
-              <details open>
-                <summary>Product details</summary>
-                <ul>
-                  <li>Kit type: {jersey.type}</li>
-                  <li>Club: {jersey.club}</li>
-                  {clubInfo && <li>League: {clubInfo.league.name}</li>}
-                  <li>Breathable, quick-dry fabric</li>
-                </ul>
-              </details>
-              <details>
-                <summary>Delivery & returns</summary>
-                <p>
-                  Track your purchases anytime from <Link to="/myorders">My orders</Link>. If the
-                  fit isn't right, you can return unworn items.
-                </p>
-              </details>
-            </div>
+            <details className="ku-detail-more">
+              <summary>Delivery & returns</summary>
+              <p>
+                Track purchases from <Link to="/myorders">My orders</Link>. Unworn items can be returned
+                if the fit is not right.
+              </p>
+            </details>
           </div>
         </div>
       </section>

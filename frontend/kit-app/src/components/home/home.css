@@ -255,9 +255,16 @@
 
 .ku-section--tint {
   margin-top: 48px;
+  padding-top: 8px;
   padding-bottom: 72px;
   background: linear-gradient(180deg, var(--ku-surface) 0%, var(--ku-bg) 100%);
   border-top: 1px solid var(--ku-line);
+}
+
+#leagues .ku-league-tabs {
+  margin-top: 8px;
+  padding-top: 20px;
+  padding-bottom: 8px;
 }
 
 .ku-section-head--stack {
@@ -294,11 +301,21 @@
     border-color 0.25s ease;
 }
 
-.ku-round-btn:hover {
+.ku-round-btn:hover:not(:disabled) {
   background: var(--ku-ink);
   border-color: var(--ku-ink);
   color: #fff;
   transform: scale(1.06);
+}
+
+.ku-round-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ku-carousel-nav:has(.ku-round-btn:disabled + .ku-round-btn:disabled) {
+  display: none;
 }
 
 .ku-carousel {

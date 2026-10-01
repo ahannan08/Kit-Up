@@ -1,90 +1,126 @@
-// Register.js
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './register.css';
-import {useNavigate} from "react-router-dom"
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate()    
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setMessage('');
   };
 
   const handleSubmit = async (e) => {
-    console.log("submit buttn hit")
-
     e.preventDefault();
+    setLoading(true);
+    setMessage('');
 
     try {
-      console.log(process.env.REACT_APP_API_URL);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-      console.log(data); // Handle the response from the server as needed
-      alert(data.message);
-      
-      if(response.ok){
-        navigate("/")
+
+      if (response.ok) {
+        setIsError(false);
+        setMessage(data.message || 'Account created. You can log in now.');
+        window.setTimeout(() => navigate('/'), 1200);
+      } else {
+        setIsError(true);
+        setMessage(data.message || 'Registration failed.');
       }
-      // You can replace this with a more user-friendly notification
-    } catch (error) {
-      console.error('Error during registration:', error);
+    } catch (err) {
+      setIsError(true);
+      setMessage('Could not reach the server. Try again in a moment.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="registration-container">
-      <form id="registration-form" onSubmit={handleSubmit}>
-        <h2>Register</h2>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+    <main className="ku-auth-page">
+      <div className="ku-auth-shell">
+        <aside className="ku-auth-aside">
+          <Link to="/" className="ku-brand ku-brand--light">
+            <span className="ku-brand-mark">K</span>
+            <span>Kit-Up</span>
+          </Link>
+          <h1>Join Kit-Up</h1>
+          <p>Create an account to shop home and away kits, checkout securely, and view your order history.</p>
+        </aside>
+
+        <div className="ku-auth-card-wrap">
+          <form className="ku-auth-card" onSubmit={handleSubmit}>
+            <h2>Create account</h2>
+            <p className="ku-auth-sub">It only takes a minute to get started.</p>
+
+            {message && (
+              <p className={`ku-auth-error ${isError ? '' : 'ku-auth-error--ok'}`} role="status">
+                {message}
+              </p>
+            )}
+
+            <div className="ku-auth-field">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                autoComplete="name"
+                required
+              />
+            </div>
+
+            <div className="ku-auth-field">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                autoComplete="email"
+                required
+              />
+            </div>
+
+            <div className="ku-auth-field">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="••••••••"
+                autoComplete="new-password"
+                required
+              />
+            </div>
+
+            <button type="submit" className="ku-btn ku-btn--primary ku-btn--block" disabled={loading}>
+              {loading ? 'Creating account…' : 'Register'}
+            </button>
+
+            <p className="ku-auth-foot">
+              Already have an account? <Link to="/">Sign in</Link>
+            </p>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-        
-      </form>
-    </div>
+      </div>
+    </main>
   );
 };
 
