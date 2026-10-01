@@ -84,15 +84,15 @@ const Home = ({ searchTerm = '' }) => {
       heroClubs
         .map((club) => allJerseys.find((j) => j.club === club && j.type === 'Home'))
         .filter(Boolean),
-    []
+    [allJerseys]
   );
 
   const topRated = useMemo(
     () => [...allJerseys].sort((a, b) => b.rating - a.rating).slice(0, 10),
-    []
+    [allJerseys]
   );
 
-  const crests = useMemo(() => leagues.flatMap((league) => league.clubs), []);
+  const crests = useMemo(() => leagues.flatMap((league) => league.clubs), [leagues]);
 
   useEffect(() => {
     const track = trackRef.current;

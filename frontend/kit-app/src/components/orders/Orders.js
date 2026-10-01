@@ -3,20 +3,15 @@ import "./orders.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const [userBalance, setUserBalance] = useState(1400);
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const userId = localStorage.getItem('userId');
         const response = await fetch(`${process.env.REACT_APP_API_URL}/order/myorders/${userId}`);
-        console.log("response:", response)
         if (response.ok) {
           const data = await response.json();
-          console.log("Orders received from backend:", data.orders); 
-      
-          setOrders(data.orders); // Set the orders received from the backend
-          
+          setOrders(data.orders);
         } else {
           console.error('Failed to fetch orders:', response.statusText);
         }
@@ -24,9 +19,9 @@ const Orders = () => {
         console.error('Error fetching orders:', error);
       }
     };
-  
+
     fetchOrders();
-  }, [userBalance]); // Add userBalance to the dependency array
+  }, []);
 
   return (
     <div className="my-orders-container">
