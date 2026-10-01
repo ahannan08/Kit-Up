@@ -1,13 +1,12 @@
 import express from 'express';
+import { Login, Register, getMe } from '../Controllers/authController.js';
+import { requireAuth } from '../middleware/auth.js';
+import { asyncHandler } from '../middleware/asyncHandler.js';
 
-import {Login,
-  Register,} from "../Controllers/authController.js"
+const authRouter = express.Router();
 
-  const authRouter = express.Router()
-// Authentication routes
-authRouter.post('/register', Register);
-authRouter.post('/login', Login);
-
-
+authRouter.post('/register', asyncHandler(Register));
+authRouter.post('/login', asyncHandler(Login));
+authRouter.get('/me', requireAuth, asyncHandler(getMe));
 
 export default authRouter;

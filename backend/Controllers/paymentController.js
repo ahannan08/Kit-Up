@@ -1,29 +1,25 @@
 import Stripe from 'stripe';
-import dotenv from 'dotenv';
-dotenv.config(); // Load environment variables first
+import { env } from '../config/env.js';
 
+const stripe = env.stripeSecretKey ? new Stripe(env.stripeSecretKey) : null;
 
-console.log('Stripe Secret Key:', process.env.STRIPE_SECRET_KEY);
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
- const createPaymentIntent = async (req, res) => {
-  const { amount } = req.body;
-
-  console.log('Received amount in backend, payment controller:', amount); // Log the received amount
-
-  try {
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount, // Amount in cents
-      currency: 'usd',
-    });
-
-    res.status(200).json({
-      clientSecret: paymentIntent.client_secret,
-    });
-  } catch (error) {
-    console.error('Error creating payment intent:', error.message);
-    res.status(500).json({ error: error.message });
+const createPaymentIntent = async (req, res) => {
+  if (!stripe) {
+    return res.status(503).json({ message: 'Stripe is not configured' });
   }
+
+  const { amount } = req.body;
+  if (!amount || amount < 50) {
+    return res.status(400).json({ message: 'amount (cents) must be at least 50' });
+  }
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: Math.round(amount),
+    currency: 'usd',
+    automatic_payment_methods: { enabled: true },
+  });
+
+  res.status(200).json({ clientSecret: paymentIntent.client_secret });
 };
 
-export {createPaymentIntent}
+export { createPaymentIntent };

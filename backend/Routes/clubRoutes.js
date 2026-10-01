@@ -1,11 +1,9 @@
 import express from 'express';
 import { searchClub } from '../Controllers/searchController.js';
+import { asyncHandler } from '../middleware/asyncHandler.js';
 
-// Search route
-const clubRouter = express.Router()
-clubRouter.get('/search', searchClub);
+const clubRouter = express.Router();
 
-
-// Payment route
+clubRouter.get('/search', asyncHandler(searchClub));
 
 export default clubRouter;

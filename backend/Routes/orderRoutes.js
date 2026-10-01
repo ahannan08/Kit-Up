@@ -1,8 +1,9 @@
-import express from "express"
-import {getOrders} from "../Controllers/orderController.js"
-const orderRouter = express.Router()
+import express from 'express';
+import { getOrders } from '../Controllers/orderController.js';
+import { asyncHandler } from '../middleware/asyncHandler.js';
 
-orderRouter.get('/myorders/:userId', getOrders);
+const orderRouter = express.Router();
+
+orderRouter.get('/myorders/:userId', asyncHandler(getOrders));
 
 export default orderRouter;
-

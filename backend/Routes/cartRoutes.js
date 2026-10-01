@@ -2,16 +2,16 @@ import express from 'express';
 import {
   addToCart,
   getCartItems,
+  updateCartItem,
   removeFromCart,
 } from '../Controllers/cartController.js';
-
+import { asyncHandler } from '../middleware/asyncHandler.js';
 
 const cartRouter = express.Router();
 
-// Cart routes
-cartRouter.post('/cart/add', addToCart);
-cartRouter.get('/cart/:userId', getCartItems);
-cartRouter.delete('/remove/:itemId', removeFromCart);
-
+cartRouter.post('/cart/add', asyncHandler(addToCart));
+cartRouter.get('/cart/:userId', asyncHandler(getCartItems));
+cartRouter.patch('/cart/:itemId', asyncHandler(updateCartItem));
+cartRouter.delete('/remove/:itemId', asyncHandler(removeFromCart));
 
 export default cartRouter;
