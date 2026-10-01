@@ -1,114 +1,208 @@
-/* League Section Styling */
-.league-section {
+.ku-league-tabs {
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 40px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-/* League Title Container */
-.title {
-  display: flex;
+.ku-league-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ku-league-tabs .ku-league-tab {
+  display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
-  margin-bottom: 20px;
-  font-weight: bold;
+  gap: 10px;
+  padding: 10px 18px 10px 12px;
+  border: 1px solid var(--ku-line);
+  border-radius: 999px;
+  background: var(--ku-surface);
+  color: var(--ku-ink-2);
+  font-family: var(--ku-font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 0.3s var(--ku-ease), color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s var(--ku-ease);
 }
 
-/* League Logo Styling with Hover Effect */
-.league-logo {
-  width: 80px; /* Adjusted for consistency */
-  height: auto;
-  transition: transform 0.3s ease;
+.ku-league-tabs .ku-league-tab:first-child {
+  padding-left: 18px;
 }
 
-.league-logo:hover {
-  transform: scale(1.05); /* Slightly increase size on hover */
+.ku-league-tabs .ku-league-tab:hover {
+  background: var(--ku-surface);
+  border-color: var(--ku-ink);
+  color: var(--ku-ink);
+  transform: translateY(-2px);
 }
 
-/* League Name Styling */
-.title-text {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  text-transform: uppercase;
-  margin-left: 15px; /* Spacing between logo and text */
+.ku-league-tabs .ku-league-tab.is-active {
+  background: var(--ku-ink);
+  border-color: var(--ku-ink);
+  color: #fff;
 }
 
-/* Club Row and Club Item Styling */
-.clubs-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* Spacing between each club */
-}
-
-/* Individual Club Container */
-.info {
-  flex: 0 0 22%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Club Logo Styling */
-.logo-img img {
-  width: 150px;
-  height: 150px;
+.ku-league-tab img {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  border-radius: 50%;
+  background: #fff;
   object-fit: contain;
-  transition: transform 0.3s ease;
-  border-radius: 10px;
+}
+
+.ku-league + .ku-league {
+  margin-top: 56px;
+}
+
+.ku-league-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.ku-league-logo {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  border: 1px solid var(--ku-line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.ku-league-logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.ku-league-head h3 {
+  margin: 0;
+  font-family: var(--ku-font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ku-ink);
+}
+
+.ku-league-head span {
+  font-size: 14px;
+  color: var(--ku-muted);
+}
+
+.ku-club-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.ku-club-grid .ku-club-card {
   position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 28px 16px 20px;
+  overflow: hidden;
+  border: 1px solid var(--ku-line);
+  border-radius: var(--ku-radius);
+  background: var(--ku-surface);
+  color: var(--ku-ink);
+  font-family: var(--ku-font);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: none;
+  transition: transform 0.45s var(--ku-ease), box-shadow 0.45s var(--ku-ease),
+    border-color 0.3s ease;
 }
 
-.info:hover .logo-img img {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-}
-
-/* Reflection Effect on Club Logo Hover */
-.info:hover .logo-img::before {
-  content: "";
+.ku-club-grid .ku-club-card::before {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 59, 92, 0.12), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ku-club-grid .ku-club-card:hover {
+  background: var(--ku-surface);
+  border-color: transparent;
+  transform: translateY(-6px);
+  box-shadow: var(--ku-shadow-lg);
+}
+
+.ku-club-grid .ku-club-card:hover::before {
+  opacity: 1;
+}
+
+.ku-club-crest {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 16px;
+}
+
+.ku-club-crest img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-  border-radius: 10px;
-  z-index: 2;
-  pointer-events: none;
+  object-fit: contain;
+  transition: transform 0.6s var(--ku-ease);
 }
 
-/* Club Name Styling */
-.club-name {
-  margin-top: 10px;
+.ku-club-card:hover .ku-club-crest img {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.ku-club-name {
+  position: relative;
+  font-family: var(--ku-font-display);
   font-size: 16px;
-  font-weight: bold;
-  text-align: center;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
-/* Light Background Colors for Each League Section */
-.premier-league {
-  background-color: #e8f4ff; /* Light blue */
+.ku-club-meta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ku-muted);
 }
 
-.seria-a {
-  background-color: #ffeef3; /* Light pink */
+.ku-club-arrow {
+  font-size: 11px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.4s var(--ku-ease);
 }
 
-.ligue-1 {
-  background-color: #e5f7e5; /* Light green */
+.ku-club-card:hover .ku-club-arrow {
+  opacity: 1;
+  transform: none;
+  color: var(--ku-accent);
 }
 
-.la-liga {
-  background-color: #fff4e5; /* Light orange */
-}
+@media (max-width: 520px) {
+  .ku-club-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 
-.bundesliga {
-  background-color: #f9e5ff; /* Light purple */
+  .ku-club-crest {
+    width: 72px;
+    height: 72px;
+  }
 }

@@ -1,0 +1,250 @@
+/* Brand */
+.ku-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ku-font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ku-ink);
+  text-decoration: none;
+}
+
+.ku-brand--light {
+  color: #fff;
+}
+
+.ku-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: var(--ku-gradient);
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0 8px 20px -8px rgba(255, 59, 92, 0.8);
+  transition: transform 0.5s var(--ku-ease);
+}
+
+.ku-brand:hover .ku-brand-mark {
+  transform: rotate(-12deg) scale(1.06);
+}
+
+/* Stars */
+.ku-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  color: #d6d9e0;
+}
+
+.ku-stars .is-on {
+  color: #ffb020;
+}
+
+.ku-stars-value {
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ku-ink-2);
+}
+
+/* Jersey card */
+.ku-jersey-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--ku-line);
+  border-radius: var(--ku-radius);
+  background: var(--ku-surface);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.45s var(--ku-ease), box-shadow 0.45s var(--ku-ease),
+    border-color 0.3s ease;
+}
+
+.ku-jersey-card:hover,
+.ku-jersey-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow: var(--ku-shadow-lg);
+}
+
+.ku-jersey-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #ffffff 0%, var(--ku-surface-2) 75%);
+}
+
+.ku-jersey-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 18px;
+  mix-blend-mode: multiply;
+  transition: transform 0.7s var(--ku-ease);
+}
+
+.ku-jersey-card:hover .ku-jersey-media img {
+  transform: scale(1.08) rotate(-1.5deg);
+}
+
+.ku-jersey-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--ku-ink);
+  color: #fff;
+}
+
+.ku-jersey-badge--away {
+  background: #fff;
+  color: var(--ku-ink);
+  box-shadow: var(--ku-shadow-sm);
+}
+
+.ku-jersey-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--ku-ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.35s ease, transform 0.45s var(--ku-ease);
+}
+
+.ku-jersey-card:hover .ku-jersey-cta,
+.ku-jersey-card:focus-visible .ku-jersey-cta {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.ku-jersey-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px 18px;
+}
+
+.ku-jersey-club {
+  margin: 0;
+  font-family: var(--ku-font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ku-ink);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ku-jersey-type {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ku-muted);
+}
+
+.ku-jersey-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.ku-jersey-price {
+  font-family: var(--ku-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ku-ink);
+}
+
+/* Footer */
+.ku-footer {
+  margin-top: 96px;
+  padding: 64px 0 28px;
+  background: var(--ku-dark);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ku-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.ku-footer-brand p {
+  max-width: 300px;
+  margin: 16px 0 0;
+  line-height: 1.6;
+}
+
+.ku-footer h4 {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.ku-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ku-footer li + li {
+  margin-top: 10px;
+}
+
+.ku-footer ul a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.3s var(--ku-ease);
+}
+
+.ku-footer ul a:hover {
+  color: #fff;
+  padding-left: 4px;
+}
+
+.ku-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .ku-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ku-footer-brand {
+    grid-column: 1 / -1;
+  }
+}

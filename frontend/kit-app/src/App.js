@@ -10,6 +10,7 @@ import Login from "./components/auth/login/Login.js"
 import Orders from "./components/orders/Orders.js";
 import Results from "./components/Results.js";
 import Success from "./pages/Success.js"
+import ScrollToTop from "./components/common/ScrollToTop.js";
 
 import { useState } from "react";
 import Checkout from "./components/payment/Checkout.js";
@@ -22,11 +23,12 @@ function App() {
  
   return (
     <div className="App">
+      <ScrollToTop />
 <Header  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}  searchTerm={searchTerm} 
         setSearchTerm={setSearchTerm} />
       <Routes>
         <Route path ="/" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route path="/home" element={<Home />}/>
+        <Route path="/home" element={<Home searchTerm={searchTerm} />}/>
         <Route path ="/display/:club" element={<Display/>}/>
         <Route path ="/jersey-details" element={<Details/>}/>
         <Route path='/cart' element ={<Cart/>}/>

@@ -1,64 +1,83 @@
-// FilterComponent.js
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const FilterComponent = ({ filters, setFilters, applyFilters, closePanel }) => {
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [name]: value,
-    }));
-  };
+const types = ['', 'Home', 'Away'];
+
+const FilterComponent = ({ filters, setFilters, applyFilters, resetFilters, closePanel }) => {
+  const update = (name, value) => setFilters((prev) => ({ ...prev, [name]: value }));
 
   return (
-    <div className="filter-panel">
-      <button onClick={closePanel} className="close-button">X</button>
-      <h2>Filter Results</h2>
-      <div>
-        <label>
-          Type:
-          <select name="type" value={filters.type} onChange={handleFilterChange}>
-            <option value="">All</option>
-            <option value="Home">Home</option>
-            <option value="Away">Away</option>
-          </select>
-        </label>
+    <div className="ku-filter" role="dialog" aria-label="Filter jerseys">
+      <div className="ku-filter-head">
+        <h3>Filter kits</h3>
+        <button type="button" onClick={closePanel} className="ku-filter-close" aria-label="Close filters">
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
       </div>
-      <div>
-        <label>
-          Rating:
+
+      <div className="ku-filter-group">
+        <span className="ku-filter-label">Kit type</span>
+        <div className="ku-segmented">
+          {types.map((type) => (
+            <button
+              key={type || 'all'}
+              type="button"
+              className={filters.type === type ? 'is-active' : ''}
+              onClick={() => update('type', type)}
+            >
+              {type || 'All'}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="ku-filter-group">
+        <span className="ku-filter-label">Minimum rating</span>
+        <div className="ku-rating-pick">
+          {[1, 2, 3, 4, 5].map((value) => (
+            <button
+              key={value}
+              type="button"
+              className={Number(filters.rating) >= value ? 'is-on' : ''}
+              onClick={() => update('rating', Number(filters.rating) === value ? 0 : value)}
+              aria-label={`${value} stars and up`}
+            >
+              <FontAwesomeIcon icon={faStar} />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="ku-filter-group">
+        <span className="ku-filter-label">Price range ($)</span>
+        <div className="ku-price-row">
           <input
             type="number"
-            name="rating"
-            value={filters.rating}
             min="0"
-            onChange={handleFilterChange}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Min Price:
-          <input
-            type="number"
-            name="minPrice"
             value={filters.minPrice}
-            onChange={handleFilterChange}
+            onChange={(e) => update('minPrice', Number(e.target.value))}
+            aria-label="Minimum price"
           />
-        </label>
-      </div>
-      <div>
-        <label>
-          Max Price:
+          <span>to</span>
           <input
             type="number"
-            name="maxPrice"
+            min="0"
             value={filters.maxPrice}
-            onChange={handleFilterChange}
+            onChange={(e) => update('maxPrice', Number(e.target.value))}
+            aria-label="Maximum price"
           />
-        </label>
+        </div>
       </div>
-      <button onClick={applyFilters}>Search</button>
+
+      <div className="ku-filter-actions">
+        <button type="button" className="ku-btn ku-btn--ghost ku-btn--sm" onClick={resetFilters}>
+          Reset
+        </button>
+        <button type="button" className="ku-btn ku-btn--primary ku-btn--sm" onClick={applyFilters}>
+          Show results
+        </button>
+      </div>
     </div>
   );
 };
