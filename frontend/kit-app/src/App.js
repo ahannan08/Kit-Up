@@ -11,7 +11,8 @@ import Results from './components/Results.js';
 import Success from './pages/Success.js';
 import ScrollToTop from './components/common/ScrollToTop.js';
 import Checkout from './components/payment/Checkout.js';
-import { useState } from 'react';
+import IntroSplash from './components/common/IntroSplash.js';
+import { useCallback, useEffect, useState } from 'react';
 import { CatalogProvider } from './context/CatalogContext.js';
 import AdminLogin from './admin/AdminLogin.js';
 import AdminLayout from './admin/AdminLayout.js';
@@ -23,13 +24,24 @@ import JerseysPage from './admin/pages/JerseysPage.js';
 import PurchasesPage from './admin/pages/PurchasesPage.js';
 import AttemptsPage from './admin/pages/AttemptsPage.js';
 
-function AppRoutes({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) {
+const INTRO_STORAGE_KEY = 'kitup_intro_home_v1';
+
+const introAlreadySeen = () => {
+  try {
+    return sessionStorage.getItem(INTRO_STORAGE_KEY) === '1';
+  } catch {
+    return false;
+  }
+};
+
+function AppRoutes({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm, hideForIntro }) {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
     <>
       <ScrollToTop />
+      <div className={hideForIntro ? 'ku-app-behind-intro' : undefined} aria-hidden={hideForIntro || undefined}>
       {!isAdminRoute && (
         <Header
           isLoggedIn={isLoggedIn}
@@ -67,6 +79,7 @@ function AppRoutes({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) {
           <Route path="attempts" element={<AttemptsPage />} />
         </Route>
       </Routes>
+      </div>
     </>
   );
 }
@@ -74,15 +87,47 @@ function AppRoutes({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) {
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const [showIntro, setShowIntro] = useState(false);
+
+  useEffect(() => {
+    if (location.pathname !== '/home') {
+      setShowIntro(false);
+      return;
+    }
+    setShowIntro(!introAlreadySeen());
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!showIntro) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [showIntro]);
+
+  const completeIntro = useCallback(() => {
+    try {
+      sessionStorage.setItem(INTRO_STORAGE_KEY, '1');
+    } catch {
+      /* ignore */
+    }
+    setShowIntro(false);
+  }, []);
+
+  const hideForIntro = showIntro && location.pathname === '/home';
 
   return (
     <CatalogProvider>
       <div className="App">
+        {showIntro && <IntroSplash onComplete={completeIntro} />}
         <AppRoutes
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
+          hideForIntro={hideForIntro}
         />
       </div>
     </CatalogProvider>

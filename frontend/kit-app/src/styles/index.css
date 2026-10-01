@@ -1,3 +1,8 @@
+.ku-app-behind-intro {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 :root {
   --ku-bg: #f5f6fa;
   --ku-surface: #ffffff;
