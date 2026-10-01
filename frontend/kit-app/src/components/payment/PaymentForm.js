@@ -1,86 +1,108 @@
 import React, { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { recordCheckoutAttempt, recordPurchase } from '../../admin/store/eventsStore.js';
+import { getCatalog } from '../../admin/store/catalogStore.js';
+import { getCheckoutUser, snapshotCart } from '../../admin/utils/checkoutTracking.js';
 
-const PaymentForm = ({ totalAmount}) => {
+const clubForJersey = (jerseyId) => {
+  const kit = getCatalog().jerseys.find((j) => j._id === String(jerseyId));
+  return kit?.clubName || '';
+};
+
+const enrichItems = (cartItems) =>
+  cartItems.map((item) => ({
+    jerseyId: item.jerseyId,
+    quantity: item.quantity,
+    price: item.price,
+    image: item.image,
+    type: item.type,
+    rating: item.rating,
+    clubName: item.clubName || clubForJersey(item.jerseyId),
+  }));
+
+const PaymentForm = ({ totalAmount, cartItems = [] }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const location = useLocation(); // Get location object
-  const { cartItems} = location.state || {}; // Destructure c
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
-    console.log('Total Amount for Payment frontend:', totalAmount); // Log the total amount for verification
-  
+    setError('');
+
+    const user = getCheckoutUser();
+
     try {
-      // Create a payment intent
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/payment/create-payment-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: totalAmount  }) // amount in cents
+        body: JSON.stringify({ amount: totalAmount }),
       });
-  
-      console.log('Payment Intent Response:', response); // Log the payment intent response
-  
+
       const { clientSecret } = await response.json();
-      console.log('Client Secret:', clientSecret); // Log the client secret
-  
+
       if (!clientSecret) {
         throw new Error('Failed to create payment intent');
       }
-  
+
       const cardElement = elements.getElement(CardElement);
-      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
-        },
+      const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: { card: cardElement },
       });
-  
-      if (error) {
-        console.log('Stripe Payment Error:', error); // Log any errors from Stripe
-        throw new Error(error.message);
+
+      if (stripeError) {
+        throw new Error(stripeError.message);
       }
-  
-      console.log("cart items in payment", cartItems)
+
       if (paymentIntent.status === 'succeeded') {
-        // Prepare to send purchase data to the backend
         const purchaseResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/payment/purchase`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            userId: localStorage.getItem('userId'), // Retrieve userId from local storage
+            userId: localStorage.getItem('userId'),
             cartItems: cartItems.map((item) => ({
               jerseyId: item.jerseyId,
               quantity: item.quantity,
               price: item.price,
               image: item.image,
               type: item.type,
-              rating: item.rating
-            }))
+              rating: item.rating,
+            })),
           }),
         });
-  
-        console.log('Purchase Response:', purchaseResponse); // Log the purchase response
 
-        // Check if purchase was successful
         if (!purchaseResponse.ok) {
           throw new Error('Failed to process purchase');
         }
 
-        alert('Payment successful and purchase confirmed!');
-        navigate('/success'); // Navigate to a success page
+        recordPurchase({
+          userId: user.userId,
+          userEmail: user.userEmail,
+          userName: user.userName,
+          items: enrichItems(cartItems),
+          totalPrice: totalAmount,
+        });
+
+        navigate('/success');
       }
-    } catch (error) {
-      setError(error.message); // Update error state to display
+    } catch (err) {
+      setError(err.message);
+      recordCheckoutAttempt({
+        userId: user.userId,
+        userEmail: user.userEmail,
+        stage: 'payment_failed',
+        cartSnapshot: snapshotCart(cartItems),
+        totalAmount: totalAmount || 0,
+        errorMessage: err.message,
+      });
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
-  
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

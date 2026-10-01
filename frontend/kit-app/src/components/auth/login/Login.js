@@ -32,6 +32,8 @@ const Login = ({ setIsLoggedIn }) => {
         const { token, userId } = data.user;
         localStorage.setItem('authToken', token);
         localStorage.setItem('userId', userId);
+        localStorage.setItem('userEmail', formData.email);
+        localStorage.setItem('userName', data.user?.name || formData.email.split('@')[0]);
         setIsLoggedIn(true);
         navigate('/home');
       } else {

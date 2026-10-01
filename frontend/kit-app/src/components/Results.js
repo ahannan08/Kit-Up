@@ -2,19 +2,18 @@
 
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { home_jer, away_jer } from "../data/jerseys"; // Import jersey data
+import { useCatalog } from '../context/CatalogContext';
 
 import "./results.css"
 const ResultsPage = () => {
   const { state } = useLocation();
-  const { filters } = state;
-  const navigate = useNavigate(); // Initialize navigate
-
-  // Combine home and away jerseys for filtering
-  const allJerseys = [...home_jer, ...away_jer];
+  const { filters } = state || {};
+  const navigate = useNavigate();
+  const { allJerseys } = useCatalog();
 
   // Filter jerseys based on the provided filters
-  const filteredJerseys = allJerseys.filter(jersey => {
+  const filteredJerseys = (allJerseys || []).filter(jersey => {
+    if (!filters) return true;
     const matchesType = filters.type ? jersey.type === filters.type : true;
     const matchesRating = jersey.rating >= filters.rating;
     const matchesPrice = jersey.price >= filters.minPrice && jersey.price <= filters.maxPrice;

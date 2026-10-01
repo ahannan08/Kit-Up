@@ -17,7 +17,8 @@ import Stars from '../../common/Stars';
 import JerseyCard from '../../common/JerseyCard';
 import Reveal from '../../common/Reveal';
 import Footer from '../../common/Footer';
-import { findClub, jerseysForClub, jerseysForLeague } from '../../../data/catalog';
+import { useCatalog } from '../../../context/CatalogContext';
+import { recordAddToCart, recordProductView } from '../../../admin/store/eventsStore.js';
 import './details.css';
 
 const MAX_QTY = 10;
@@ -25,25 +26,39 @@ const MAX_QTY = 10;
 const Details = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { findClub, jerseysForClub, jerseysForLeague } = useCatalog();
   const { jersey } = location.state || {};
   const [quantity, setQuantity] = useState(1);
   const [adding, setAdding] = useState(false);
   const [toast, setToast] = useState(null);
   const zoomRef = useRef(null);
 
-  const clubInfo = useMemo(() => (jersey ? findClub(jersey.club) : null), [jersey]);
+  const clubInfo = useMemo(() => (jersey ? findClub(jersey.club) : null), [jersey, findClub]);
 
-  const clubKits = useMemo(() => (jersey ? jerseysForClub(jersey.club) : []), [jersey]);
+  const clubKits = useMemo(
+    () => (jersey ? jerseysForClub(jersey.club) : []),
+    [jersey, jerseysForClub]
+  );
 
   const related = useMemo(() => {
-    if (!clubInfo) return [];
+    if (!clubInfo || !jersey) return [];
     return jerseysForLeague(clubInfo.league)
       .filter((j) => j.club !== jersey.club)
       .sort((a, b) => b.rating - a.rating)
       .slice(0, 4);
-  }, [clubInfo, jersey]);
+  }, [clubInfo, jersey, jerseysForLeague]);
 
   useEffect(() => setQuantity(1), [jersey]);
+
+  useEffect(() => {
+    if (!jersey?._id) return;
+    recordProductView({
+      jerseyId: jersey._id,
+      clubName: jersey.club,
+      type: jersey.type,
+      price: jersey.price,
+    });
+  }, [jersey?._id, jersey?.club, jersey?.type, jersey?.price]);
 
   useEffect(() => {
     if (!toast) return undefined;
@@ -100,6 +115,15 @@ const Details = () => {
       });
 
       if (response.ok) {
+        recordAddToCart({
+          userId,
+          userEmail: localStorage.getItem('userEmail'),
+          jerseyId: jersey._id,
+          clubName: jersey.club,
+          type: jersey.type,
+          price: jersey.price,
+          quantity,
+        });
         setToast({
           type: 'success',
           message: `${quantity} × ${jersey.club} ${jersey.type} kit added to your cart.`,

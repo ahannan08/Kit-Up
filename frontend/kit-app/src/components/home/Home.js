@@ -15,7 +15,7 @@ import JerseyCard from '../common/JerseyCard';
 import Reveal from '../common/Reveal';
 import Footer from '../common/Footer';
 import Stars from '../common/Stars';
-import { allJerseys, leagues, totalClubs } from '../../data/catalog';
+import { useCatalog } from '../../context/CatalogContext';
 import './home.css';
 
 const heroClubs = ['Real Madrid', 'Manchester United', 'FC Barcelona'];
@@ -52,6 +52,7 @@ const testimonials = [
 ];
 
 const Home = ({ searchTerm = '' }) => {
+  const { leagues, allJerseys, totalClubs } = useCatalog();
   const location = useLocation();
   const [activeLeague, setActiveLeague] = useState(location.state?.league || 'All');
   const trackRef = useRef(null);

@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Reveal from '../../common/Reveal';
-import { leagues, jerseysForClub } from '../../../data/catalog';
+import { useCatalog } from '../../../context/CatalogContext';
 import './clubs.css';
 
 const Club = ({ searchTerm = '', activeLeague = 'All', setActiveLeague, hideTabs = false }) => {
+  const { leagues, jerseysForClub } = useCatalog();
   const navigate = useNavigate();
   const term = searchTerm.trim().toLowerCase();
 

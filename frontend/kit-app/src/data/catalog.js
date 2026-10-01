@@ -1,21 +1,14 @@
-import { bundesliga, laliga, ligue1, pl, seria } from './clubs.js';
-import { home_jer, away_jer } from './jerseys.js';
+import { getStorefrontCatalog, ensureCatalogSeeded } from '../admin/store/catalogStore.js';
 
-import plLogo from '../assets/leagueLogos/pl.jpg';
-import seriaLogo from '../assets/leagueLogos/SERIA.png';
-import ligue1Logo from '../assets/leagueLogos/ligue1.jpg';
-import laligaLogo from '../assets/leagueLogos/laliga.png';
-import bundesligaLogo from '../assets/leagueLogos/bundus.jpg';
+/** @deprecated Prefer useCatalog() in React components. */
+export const getCatalogSnapshot = () => {
+  ensureCatalogSeeded();
+  return getStorefrontCatalog();
+};
 
-export const leagues = [
-  { name: 'Premier League', country: 'England', logo: plLogo, clubs: pl },
-  { name: 'La Liga', country: 'Spain', logo: laligaLogo, clubs: laliga },
-  { name: 'Serie A', country: 'Italy', logo: seriaLogo, clubs: seria },
-  { name: 'Bundesliga', country: 'Germany', logo: bundesligaLogo, clubs: bundesliga },
-  { name: 'Ligue 1', country: 'France', logo: ligue1Logo, clubs: ligue1 },
-];
-
-export const allJerseys = [...home_jer, ...away_jer];
+export const leagues = getCatalogSnapshot().leagues;
+export const allJerseys = getCatalogSnapshot().allJerseys;
+export const totalClubs = leagues.reduce((sum, league) => sum + league.clubs.length, 0);
 
 export const findClub = (clubName) => {
   for (const league of leagues) {
@@ -32,5 +25,3 @@ export const jerseysForLeague = (league) => {
   const names = new Set(league.clubs.map((c) => c.club));
   return allJerseys.filter((jersey) => names.has(jersey.club));
 };
-
-export const totalClubs = leagues.reduce((sum, league) => sum + league.clubs.length, 0);

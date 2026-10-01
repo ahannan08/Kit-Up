@@ -5,7 +5,7 @@ import { faArrowLeft, faChevronRight, faShirt } from '@fortawesome/free-solid-sv
 import JerseyCard from '../../common/JerseyCard';
 import Reveal from '../../common/Reveal';
 import Footer from '../../common/Footer';
-import { findClub, jerseysForClub } from '../../../data/catalog';
+import { useCatalog } from '../../../context/CatalogContext';
 import './display.css';
 
 const tabs = ['All', 'Home', 'Away'];
@@ -13,12 +13,13 @@ const tabs = ['All', 'Home', 'Away'];
 const Display = () => {
   const { club } = useParams();
   const navigate = useNavigate();
+  const { findClub, jerseysForClub } = useCatalog();
   const [activeTab, setActiveTab] = useState('All');
 
   useEffect(() => setActiveTab('All'), [club]);
 
   const clubInfo = findClub(club);
-  const jerseys = useMemo(() => jerseysForClub(club), [club]);
+  const jerseys = useMemo(() => jerseysForClub(club), [club, jerseysForClub]);
   const visible = activeTab === 'All' ? jerseys : jerseys.filter((j) => j.type === activeTab);
   const otherClubs = clubInfo ? clubInfo.league.clubs.filter((c) => c.club !== club) : [];
   const prices = jerseys.map((j) => j.price);
