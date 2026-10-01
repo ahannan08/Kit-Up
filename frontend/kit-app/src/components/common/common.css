@@ -32,6 +32,31 @@
   transform: rotate(-12deg) scale(1.06);
 }
 
+.ku-brand--image {
+  gap: 0;
+}
+
+.ku-brand-img {
+  display: block;
+  width: auto;
+  height: 44px;
+  max-width: 168px;
+  object-fit: contain;
+  transition: transform 0.35s var(--ku-ease), opacity 0.25s ease;
+}
+
+.ku-brand--image:hover .ku-brand-img {
+  transform: scale(1.03);
+  opacity: 0.92;
+}
+
+@media (max-width: 520px) {
+  .ku-brand-img {
+    height: 38px;
+    max-width: 140px;
+  }
+}
+
 /* Stars */
 .ku-stars {
   display: inline-flex;

@@ -93,9 +93,8 @@ const Header = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) => {
   return (
     <header className={`ku-nav ${scrolled ? 'is-scrolled' : ''} ${showMobileMenu ? 'is-open' : ''}`}>
       <div className="ku-container ku-nav-inner">
-        <Link to={isLoggedIn ? '/home' : '/'} className="ku-brand">
-          <span className="ku-brand-mark">K</span>
-          <span>Kit-Up</span>
+        <Link to={isLoggedIn ? '/home' : '/'} className="ku-brand ku-brand--image">
+          <img src={`${process.env.PUBLIC_URL}/kitup-logo-light-bg.png`} alt="Kit-Up" className="ku-brand-img" />
         </Link>
 
         {isLoggedIn && (

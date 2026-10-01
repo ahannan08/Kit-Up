@@ -14,6 +14,7 @@ import Club from './club/Club';
 import JerseyCard from '../common/JerseyCard';
 import Reveal from '../common/Reveal';
 import Footer from '../common/Footer';
+import Stars from '../common/Stars';
 import { allJerseys, leagues, totalClubs } from '../../data/catalog';
 import './home.css';
 
@@ -24,6 +25,30 @@ const perks = [
   { icon: faTruckFast, title: 'Fast dispatch', text: 'Orders are packed and shipped quickly.' },
   { icon: faLock, title: 'Secure checkout', text: 'Card payments are processed by Stripe.' },
   { icon: faRotateLeft, title: 'Easy returns', text: 'Wrong fit? Send it back without the hassle.' },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Picked up the Real Madrid home kit — colours are sharp and the fit is exactly what I wanted for match days.',
+    name: 'Carlos R.',
+    detail: 'Madrid, Spain',
+    rating: 5,
+  },
+  {
+    quote:
+      'Easy to browse by league, checkout was smooth, and my Liverpool away shirt arrived quicker than I expected.',
+    name: 'Emma T.',
+    detail: 'Liverpool supporter',
+    rating: 5,
+  },
+  {
+    quote:
+      'Great selection across Serie A clubs. The Inter Milan kit quality feels premium for the price.',
+    name: 'Marco B.',
+    detail: 'Inter Milan fan',
+    rating: 4,
+  },
 ];
 
 const Home = ({ searchTerm = '' }) => {
@@ -222,6 +247,29 @@ const Home = ({ searchTerm = '' }) => {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      <section id="testimonials" className="ku-section ku-testimonials">
+        <div className="ku-container">
+          <Reveal className="ku-section-head ku-section-head--stack">
+            <span className="ku-eyebrow">Real fans</span>
+            <h2 className="ku-section-title">What kit buyers say</h2>
+          </Reveal>
+          <div className="ku-testimonial-grid">
+            {testimonials.map((item, i) => (
+              <Reveal key={item.name} delay={i * 90}>
+                <figure className="ku-testimonial">
+                  <blockquote>&ldquo;{item.quote}&rdquo;</blockquote>
+                  <figcaption>
+                    <Stars rating={item.rating} />
+                    <span className="ku-testimonial-name">{item.name}</span>
+                    <span className="ku-testimonial-detail">{item.detail}</span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
