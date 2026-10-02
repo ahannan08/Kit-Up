@@ -33,7 +33,7 @@ const Display = () => {
           </span>
           <h2>Club not found</h2>
           <p>We couldn't find any kits for “{club}”.</p>
-          <Link to="/home" className="ku-btn ku-btn--dark">Browse all clubs</Link>
+          <Link to="/" className="ku-btn ku-btn--dark">Browse all clubs</Link>
         </div>
       </main>
     );
@@ -47,11 +47,11 @@ const Display = () => {
         </div>
         <div className="ku-container ku-club-hero-inner">
           <nav className="ku-breadcrumb" aria-label="Breadcrumb">
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
             <FontAwesomeIcon icon={faChevronRight} />
             {clubInfo && (
               <>
-                <Link to="/home" state={{ league: clubInfo.league.name }}>{clubInfo.league.name}</Link>
+                <Link to="/" state={{ league: clubInfo.league.name }}>{clubInfo.league.name}</Link>
                 <FontAwesomeIcon icon={faChevronRight} />
               </>
             )}

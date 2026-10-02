@@ -75,7 +75,7 @@ const Details = () => {
           </span>
           <h2>No jersey selected</h2>
           <p>Pick a club and choose a kit to see its details.</p>
-          <Link to="/home" className="ku-btn ku-btn--dark">Browse clubs</Link>
+          <Link to="/" className="ku-btn ku-btn--dark">Browse clubs</Link>
         </div>
       </main>
     );
@@ -143,7 +143,7 @@ const Details = () => {
     <main className="ku-page ku-page--detail">
       <section className="ku-container ku-detail">
         <nav className="ku-breadcrumb ku-breadcrumb--dark" aria-label="Breadcrumb">
-          <Link to="/home">Home</Link>
+          <Link to="/">Home</Link>
           <FontAwesomeIcon icon={faChevronRight} />
           <Link to={`/display/${jersey.club}`}>{jersey.club}</Link>
           <FontAwesomeIcon icon={faChevronRight} />

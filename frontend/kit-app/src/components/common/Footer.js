@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="ku-footer">
       <div className="ku-container ku-footer-grid">
         <div className="ku-footer-brand">
-          <Link to="/home" className="ku-brand ku-brand--light">
+          <Link to="/" className="ku-brand ku-brand--light">
             <span className="ku-brand-mark">K</span>
             <span>Kit-Up</span>
           </Link>
@@ -22,7 +22,7 @@ const Footer = () => {
           <ul>
             {leagues.map((league) => (
               <li key={league.name}>
-                <Link to="/home" state={{ league: league.name }}>{league.name}</Link>
+                <Link to="/" state={{ league: league.name }}>{league.name}</Link>
               </li>
             ))}
           </ul>

@@ -79,7 +79,7 @@ const Dashboard = () => {
           <h1>Overview</h1>
           <p className="ku-admin-lead">
             Sales and engagement from local tracking (cart, checkout, purchases).{' '}
-            <Link to="/home">View storefront</Link>
+            <Link to="/">View storefront</Link>
           </p>
         </div>
       </header>

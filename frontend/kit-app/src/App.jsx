@@ -14,6 +14,8 @@ const introAlreadySeen = () => {
   }
 };
 
+const isHomePath = (pathname) => pathname === '/' || pathname === '/home';
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +23,7 @@ const App = () => {
   const [showIntro, setShowIntro] = useState(false);
 
   useEffect(() => {
-    if (location.pathname !== '/home') {
+    if (!isHomePath(location.pathname)) {
       setShowIntro(false);
       return;
     }
@@ -46,7 +48,7 @@ const App = () => {
     setShowIntro(false);
   }, []);
 
-  const hideForIntro = showIntro && location.pathname === '/home';
+  const hideForIntro = showIntro && isHomePath(location.pathname);
 
   return (
     <CatalogProvider>

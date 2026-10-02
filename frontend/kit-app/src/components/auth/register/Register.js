@@ -32,7 +32,7 @@ const Register = () => {
       if (response.ok) {
         setIsError(false);
         setMessage(data.message || 'Account created. You can log in now.');
-        window.setTimeout(() => navigate('/'), 1200);
+        window.setTimeout(() => navigate('/login'), 1200);
       } else {
         setIsError(true);
         setMessage(data.message || 'Registration failed.');
@@ -115,7 +115,7 @@ const Register = () => {
             </button>
 
             <p className="ku-auth-foot">
-              Already have an account? <Link to="/">Sign in</Link>
+              Already have an account? <Link to="/login">Sign in</Link>
             </p>
           </form>
         </div>

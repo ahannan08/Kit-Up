@@ -63,7 +63,7 @@ const Cart = () => {
             </span>
             <h2>Your cart is empty</h2>
             <p>Browse clubs and add home or away kits to get started.</p>
-            <Link to="/home" className="ku-btn ku-btn--primary">Shop kits</Link>
+            <Link to="/" className="ku-btn ku-btn--primary">Shop kits</Link>
           </div>
         ) : (
           <div className="ku-cart-layout">
@@ -103,7 +103,7 @@ const Cart = () => {
                 </div>
               </dl>
               <CheckoutButton cartItems={cartItems} />
-              <Link to="/home" className="ku-btn ku-btn--ghost ku-btn--block">Continue shopping</Link>
+              <Link to="/" className="ku-btn ku-btn--ghost ku-btn--block">Continue shopping</Link>
             </aside>
           </div>
         )}

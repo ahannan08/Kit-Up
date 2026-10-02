@@ -72,7 +72,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) => {
 
   const handleSearch = (value) => {
     setSearchTerm(value);
-    if (location.pathname !== '/home') navigate('/home');
+    if (location.pathname !== '/') navigate('/');
   };
 
   const applyFilters = () => {
@@ -82,7 +82,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) => {
 
   const links = isLoggedIn
     ? [
-        { to: '/home', label: 'Home', icon: faHouse },
+        { to: '/', label: 'Home', icon: faHouse, end: true },
         { to: '/cart', label: 'Cart', icon: faBagShopping },
         { to: '/myorders', label: 'Orders', icon: faBoxOpen },
       ]
@@ -93,14 +93,14 @@ const Header = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) => {
   return (
     <header className={`ku-nav ${scrolled ? 'is-scrolled' : ''} ${showMobileMenu ? 'is-open' : ''}`}>
       <div className="ku-container ku-nav-inner">
-        <Link to={isLoggedIn ? '/home' : '/'} className="ku-brand ku-brand--image">
+        <Link to="/" className="ku-brand ku-brand--image">
           <img src={`${process.env.PUBLIC_URL}/kitup-logo-light-bg.png`} alt="Kit-Up" className="ku-brand-img" />
         </Link>
 
         {isLoggedIn && (
           <nav className="ku-nav-links" aria-label="Main">
             {links.map((link) => (
-              <NavLink key={link.to} to={link.to} className={navClass}>
+              <NavLink key={link.to} to={link.to} end={link.end} className={navClass}>
                 {link.label}
               </NavLink>
             ))}
@@ -151,7 +151,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) => {
             </>
           ) : (
             <div className="ku-nav-auth ku-hide-mobile">
-              <NavLink to="/" end className={navClass}>Login</NavLink>
+              <NavLink to="/login" className={navClass}>Login</NavLink>
               <Link to="/register" className="ku-btn ku-btn--dark ku-btn--sm">Register</Link>
             </div>
           )}
@@ -181,6 +181,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) => {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  end={link.end}
                   className={navClass}
                   style={{ '--ku-i': i }}
                 >
@@ -200,7 +201,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm }) => {
             </>
           ) : (
             <>
-              <NavLink to="/" end className={navClass} style={{ '--ku-i': 0 }}>Login</NavLink>
+              <NavLink to="/login" className={navClass} style={{ '--ku-i': 0 }}>Login</NavLink>
               <NavLink to="/register" className={navClass} style={{ '--ku-i': 1 }}>Register</NavLink>
             </>
           )}

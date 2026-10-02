@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Home from '../home/Home.js';
 import Display from '../jerseys/display/Display.js';
 import Header from '../header/Header.js';
@@ -42,8 +42,9 @@ const AppRoutes = ({ isLoggedIn, setIsLoggedIn, searchTerm, setSearchTerm, hideF
           />
         )}
         <Routes>
-          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/home" element={<Home searchTerm={searchTerm} />} />
+          <Route path="/" element={<Home searchTerm={searchTerm} />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/display/:club" element={<Display />} />
           <Route path="/jersey-details" element={<Details />} />
           <Route path="/cart" element={<Cart />} />

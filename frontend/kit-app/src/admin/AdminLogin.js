@@ -20,7 +20,7 @@ const AdminLogin = () => {
   return (
     <main className="ku-admin-login">
       <form className="ku-admin-login-card" onSubmit={handleSubmit}>
-        <Link to="/home" className="ku-admin-back">← Back to store</Link>
+        <Link to="/" className="ku-admin-back">← Back to store</Link>
         <h1>Kit-Up Admin</h1>
         <p>Mock login (frontend only). Password is documented in admin store constants.</p>
         {error && <p className="ku-admin-error">{error}</p>}
