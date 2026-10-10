@@ -8,6 +8,7 @@ import paymentRouter from './Routes/paymentRoutes.js';
 import cartRouter from './Routes/cartRoutes.js';
 import orderRouter from './Routes/orderRoutes.js';
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
+import { ensureDatabaseReady } from './config/database.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,6 +20,18 @@ app.use(express.json());
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', service: 'kit-up-api' });
+});
+
+app.use(async (req, res, next) => {
+  if (req.path === '/health') {
+    return next();
+  }
+  try {
+    await ensureDatabaseReady();
+    next();
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.use('/clubs', express.static(path.join(__dirname, 'shared/clubs')));

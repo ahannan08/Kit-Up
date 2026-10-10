@@ -15,7 +15,10 @@ export async function connectDatabase() {
     return mongoose.connection;
   }
 
-  await mongoose.connect(env.mongoUri);
+  await mongoose.connect(env.mongoUri, {
+    serverSelectionTimeoutMS: 15000,
+    maxPoolSize: 5,
+  });
   const { host, name } = mongoose.connection;
   console.log(`✅ MongoDB connected (${name} @ ${host})`);
   return mongoose.connection;
