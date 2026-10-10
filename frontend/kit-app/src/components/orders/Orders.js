@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import "./orders.css";
+import { formatPrice } from '../../utils/currency.js';
+import './orders.css';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -34,7 +35,7 @@ const Orders = () => {
               <div className="order-item-details">
                 <div className="order-item-type">Type: {order.type}</div>
                 <div className="order-item-quantity">Quantity: {order.quantity}</div>
-                <div className="order-item-price">Price: ${order.totalPrice}</div>
+                <div className="order-item-price">Price: {formatPrice(order.totalPrice)}</div>
                 <div className="order-item-date">Date: {new Date(order.purchaseDate).toLocaleDateString()}</div>
               </div>
             </li>

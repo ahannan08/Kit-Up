@@ -3,6 +3,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCatalog } from '../context/CatalogContext';
+import { formatPrice } from '../utils/currency.js';
 
 import "./results.css"
 const ResultsPage = () => {
@@ -36,7 +37,7 @@ const ResultsPage = () => {
             <h3>{jersey.club}</h3>
             <p>Type: {jersey.type}</p>
             <p>Rating: {jersey.rating}</p>
-            <p>Price: ${jersey.price}</p>
+            <p>Price: {formatPrice(jersey.price)}</p>
           </div>
         ))}
       </div>

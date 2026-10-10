@@ -39,7 +39,7 @@ const PaymentForm = ({ totalAmount, cartItems = [] }) => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/payment/create-payment-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: totalAmount }),
+        body: JSON.stringify({ amount: Math.round(totalAmount * 100) }),
       });
 
       const { clientSecret } = await response.json();

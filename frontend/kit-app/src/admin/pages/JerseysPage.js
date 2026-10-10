@@ -1,13 +1,26 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useAdminCatalog } from '../hooks/useAdminCatalog.js';
-import { deleteJersey, upsertJersey } from '../store/catalogStore.js';
+import { bulkUpdateJerseyPrices, deleteJersey, upsertJersey } from '../store/catalogStore.js';
 import EntityModal from '../components/EntityModal.js';
 import AdminLeagueFilter from '../components/AdminLeagueFilter.js';
+import { formatPrice } from '../../utils/currency.js';
+
+const KIT_TYPE_OPTIONS = [
+  { value: 'all', label: 'All kits' },
+  { value: 'Home', label: 'Home' },
+  { value: 'Away', label: 'Away' },
+];
+
+const DEFAULT_HOME_PRICE = 700;
+const DEFAULT_AWAY_PRICE = 500;
 
 const JerseysPage = () => {
   const catalog = useAdminCatalog();
   const [modal, setModal] = useState(null);
   const [leagueFilter, setLeagueFilter] = useState('all');
+  const [typeFilter, setTypeFilter] = useState('all');
+  const [selectedIds, setSelectedIds] = useState(() => new Set());
+  const [bulkPrice, setBulkPrice] = useState('');
 
   const clubMeta = useMemo(() => {
     const byName = new Map();
@@ -50,9 +63,15 @@ const JerseysPage = () => {
   }, [catalog.jerseys, clubMeta]);
 
   const filteredJerseys = useMemo(() => {
-    if (leagueFilter === 'all') return sortedJerseys;
-    return sortedJerseys.filter((j) => j.leagueId === leagueFilter);
-  }, [sortedJerseys, leagueFilter]);
+    let list = sortedJerseys;
+    if (leagueFilter !== 'all') {
+      list = list.filter((j) => j.leagueId === leagueFilter);
+    }
+    if (typeFilter !== 'all') {
+      list = list.filter((j) => j.type === typeFilter);
+    }
+    return list;
+  }, [sortedJerseys, leagueFilter, typeFilter]);
 
   const filterCounts = useMemo(() => {
     const counts = { all: catalog.jerseys.length };
@@ -61,6 +80,54 @@ const JerseysPage = () => {
     });
     return counts;
   }, [catalog.jerseys.length, catalog.leagues, sortedJerseys]);
+
+  const typeCounts = useMemo(() => {
+    const base =
+      leagueFilter === 'all'
+        ? sortedJerseys
+        : sortedJerseys.filter((j) => j.leagueId === leagueFilter);
+    return {
+      all: base.length,
+      Home: base.filter((j) => j.type === 'Home').length,
+      Away: base.filter((j) => j.type === 'Away').length,
+    };
+  }, [sortedJerseys, leagueFilter]);
+
+  useEffect(() => {
+    setSelectedIds(new Set());
+  }, [leagueFilter, typeFilter]);
+
+  const allVisibleSelected =
+    filteredJerseys.length > 0 && filteredJerseys.every((j) => selectedIds.has(j.id));
+
+  const toggleSelectAllVisible = () => {
+    if (allVisibleSelected) {
+      setSelectedIds(new Set());
+      return;
+    }
+    setSelectedIds(new Set(filteredJerseys.map((j) => j.id)));
+  };
+
+  const toggleRow = (id) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const applyBulkToSelected = () => {
+    const price = Number(bulkPrice);
+    if (!Number.isFinite(price) || price < 0 || selectedIds.size === 0) return;
+    bulkUpdateJerseyPrices({ price, jerseyIds: [...selectedIds] });
+    setBulkPrice('');
+    setSelectedIds(new Set());
+  };
+
+  const applyCatalogWideByType = (type, price) => {
+    bulkUpdateJerseyPrices({ types: [type], price });
+  };
 
   const jerseyFields = useMemo(
     () => [
@@ -83,7 +150,7 @@ const JerseysPage = () => {
           { value: 'Away', label: 'Away' },
         ],
       },
-      { name: 'price', label: 'Price ($)', type: 'number', required: true },
+      { name: 'price', label: 'Price (₹)', type: 'number', required: true },
       { name: 'rating', label: 'Rating (1–5)', type: 'number', required: true },
       { name: 'description', label: 'Description', type: 'textarea', required: true },
       { name: 'imageUrl', label: 'Image URL', required: true },
@@ -111,7 +178,8 @@ const JerseysPage = () => {
           <h1>Jerseys</h1>
           <p className="ku-admin-lead">
             Sorted by league, club, then kit type · showing {filteredJerseys.length} of{' '}
-            {catalog.jerseys.length}
+            {catalog.jerseys.length}. If prices look stale, use bulk actions below (updates entire
+            catalog for Home/Away shortcuts).
           </p>
         </div>
         <button type="button" className="ku-btn ku-btn--primary" onClick={openAdd}>
@@ -126,10 +194,67 @@ const JerseysPage = () => {
         counts={filterCounts}
       />
 
+      <div className="ku-admin-filters" role="group" aria-label="Filter by kit type">
+        {KIT_TYPE_OPTIONS.map((opt) => (
+          <button
+            key={opt.value}
+            type="button"
+            className={typeFilter === opt.value ? 'is-active' : ''}
+            onClick={() => setTypeFilter(opt.value)}
+          >
+            {opt.label}
+            <span>{typeCounts[opt.value] ?? 0}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className="ku-admin-bulk-bar">
+        <label className="ku-admin-bulk-field">
+          Set price (₹)
+          <input
+            type="number"
+            min="0"
+            value={bulkPrice}
+            onChange={(e) => setBulkPrice(e.target.value)}
+            placeholder="e.g. 700"
+          />
+        </label>
+        <button
+          type="button"
+          className="ku-btn ku-btn--primary"
+          disabled={!bulkPrice || selectedIds.size === 0}
+          onClick={applyBulkToSelected}
+        >
+          Apply to selected ({selectedIds.size})
+        </button>
+        <button
+          type="button"
+          className="ku-btn ku-btn--ghost"
+          onClick={() => applyCatalogWideByType('Home', DEFAULT_HOME_PRICE)}
+        >
+          All Home → ₹{DEFAULT_HOME_PRICE}
+        </button>
+        <button
+          type="button"
+          className="ku-btn ku-btn--ghost"
+          onClick={() => applyCatalogWideByType('Away', DEFAULT_AWAY_PRICE)}
+        >
+          All Away → ₹{DEFAULT_AWAY_PRICE}
+        </button>
+      </div>
+
       <div className="ku-admin-table-wrap">
         <table className="ku-admin-table">
           <thead>
             <tr>
+              <th>
+                <input
+                  type="checkbox"
+                  checked={allVisibleSelected}
+                  onChange={toggleSelectAllVisible}
+                  aria-label="Select all jerseys on this page"
+                />
+              </th>
               <th>Image</th>
               <th>League</th>
               <th>Club</th>
@@ -142,11 +267,19 @@ const JerseysPage = () => {
           <tbody>
             {filteredJerseys.length === 0 ? (
               <tr>
-                <td colSpan={7}>No jerseys in this league.</td>
+                <td colSpan={8}>No jerseys match these filters.</td>
               </tr>
             ) : (
               filteredJerseys.map((jersey) => (
                 <tr key={jersey.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.has(jersey.id)}
+                      onChange={() => toggleRow(jersey.id)}
+                      aria-label={`Select ${jersey.clubName} ${jersey.type}`}
+                    />
+                  </td>
                   <td>
                     {jersey.imageUrl ? (
                       <img src={jersey.imageUrl} alt="" className="ku-admin-thumb" />
@@ -157,7 +290,7 @@ const JerseysPage = () => {
                   <td>{jersey.leagueName}</td>
                   <td>{jersey.clubName}</td>
                   <td>{jersey.type}</td>
-                  <td>${jersey.price}</td>
+                  <td>{formatPrice(jersey.price)}</td>
                   <td>{jersey.rating}</td>
                   <td>
                     <div className="ku-admin-actions">

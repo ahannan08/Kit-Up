@@ -5,6 +5,7 @@ import PaymentForm from './PaymentForm';
 import { useLocation } from 'react-router-dom';
 import { recordCheckoutAttempt } from '../../admin/store/eventsStore.js';
 import { getCheckoutUser, snapshotCart } from '../../admin/utils/checkoutTracking.js';
+import { formatPrice } from '../../utils/currency.js';
 import './checkout.css';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
@@ -34,12 +35,12 @@ const Checkout = () => {
         {cartItems?.map((item, index) => (
           <p key={index} className="cart-item">
             <span>{item.type}</span>
-            <span>${item.price}</span>
+            <span>{formatPrice(item.price)}</span>
           </p>
         ))}
         <p className="total-amount">
           <span>Total:</span>
-          <span>${totalAmount}</span>
+          <span>{formatPrice(totalAmount)}</span>
         </p>
       </div>
       <Elements stripe={stripePromise}>

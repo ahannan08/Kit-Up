@@ -19,6 +19,7 @@ import Reveal from '../../common/Reveal';
 import Footer from '../../common/Footer';
 import { useCatalog } from '../../../context/CatalogContext';
 import { recordAddToCart, recordProductView } from '../../../admin/store/eventsStore.js';
+import { formatPrice } from '../../../utils/currency.js';
 import './details.css';
 
 const MAX_QTY = 10;
@@ -203,7 +204,7 @@ const Details = () => {
               <span>Fan rating</span>
             </div>
 
-            <div className="ku-detail-price">${jersey.price}</div>
+            <div className="ku-detail-price">{formatPrice(jersey.price)}</div>
 
             <ul className="ku-detail-specs">
               <li><span>Kit</span>{jersey.type}</li>
@@ -240,7 +241,7 @@ const Details = () => {
                 disabled={adding}
               >
                 {adding ? <span className="ku-spinner" /> : <FontAwesomeIcon icon={faBagShopping} />}
-                {adding ? 'Adding...' : `Add to cart · $${jersey.price * quantity}`}
+                {adding ? 'Adding...' : `Add to cart · ${formatPrice(jersey.price * quantity)}`}
               </button>
             </div>
 

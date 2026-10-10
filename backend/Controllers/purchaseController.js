@@ -1,6 +1,7 @@
 import { User } from '../Schemas/userSchema.js';
 import { Purchase } from '../Schemas/purchaseSchema.js';
 import { Cart } from '../Schemas/cartSchema.js';
+import { expectedPriceForType, lineTotalForItem } from '../config/pricing.js';
 
 const purchase = async (req, res) => {
   const { userId, cartItems } = req.body;
@@ -17,7 +18,27 @@ const purchase = async (req, res) => {
     return res.status(404).json({ message: 'User not found' });
   }
 
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const normalizedItems = [];
+  let totalPrice = 0;
+  for (const item of cartItems) {
+    const unitPrice = expectedPriceForType(item.type);
+    if (unitPrice == null) {
+      return res.status(400).json({ message: 'Each item must have type Home or Away' });
+    }
+    const lineTotal = lineTotalForItem(item);
+    if (lineTotal == null) {
+      return res.status(400).json({ message: 'Invalid cart line item' });
+    }
+    totalPrice += lineTotal;
+    normalizedItems.push({
+      jerseyId: item.jerseyId,
+      quantity: item.quantity,
+      price: unitPrice,
+      image: item.image,
+      type: item.type,
+      rating: item.rating,
+    });
+  }
 
   if (user.balance < totalPrice) {
     return res.status(400).json({ message: 'Insufficient balance' });
@@ -28,14 +49,7 @@ const purchase = async (req, res) => {
 
   const newPurchase = await Purchase.create({
     userId,
-    items: cartItems.map((item) => ({
-      jerseyId: item.jerseyId,
-      quantity: item.quantity,
-      price: item.price,
-      image: item.image,
-      type: item.type,
-      rating: item.rating,
-    })),
+    items: normalizedItems,
     totalPrice,
   });
 

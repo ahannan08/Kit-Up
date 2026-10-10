@@ -100,7 +100,7 @@ const home_jer = [
     Image: ars1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "2",
@@ -108,7 +108,7 @@ const home_jer = [
     Image: che1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "3",
@@ -116,7 +116,7 @@ const home_jer = [
     Image: utd1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "4",
@@ -124,42 +124,42 @@ const home_jer = [
     Image: city1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {  _id: "5",
     club: "Tottenham",
     Image: spur1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {  _id: "6",
     club: "NewCastle United",
     Image: new1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {   _id: "7",
     club: "West Ham",
     Image: west1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {  _id: "8",
     club: "Aston Villa",
     Image: aston1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {   _id: "9",
     club: "Liverpool",
     Image: liv1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
 
   //seria a
@@ -170,7 +170,7 @@ const home_jer = [
     Image: ac1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
 
   },
   {  _id: "11",
@@ -178,7 +178,7 @@ const home_jer = [
     Image: atlan1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
    
   },
   {  _id: "12",
@@ -186,14 +186,14 @@ const home_jer = [
     Image: juve1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {  _id: "13",
     club: "Lazio",
     Image: lazio1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
    
   },
   {  _id: "14",
@@ -201,7 +201,7 @@ const home_jer = [
     Image: milan1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   
   },
   {  _id: "15",
@@ -209,7 +209,7 @@ const home_jer = [
     Image: nap1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
    
   },
   {  _id: "16",
@@ -217,7 +217,7 @@ const home_jer = [
     Image: roma1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
 
   // Bundesliga home jerseys
@@ -227,7 +227,7 @@ const home_jer = [
     Image: bvb1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "65",
@@ -235,7 +235,7 @@ const home_jer = [
     Image: bayern1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "66",
@@ -243,7 +243,7 @@ const home_jer = [
     Image: union1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "67",
@@ -251,7 +251,7 @@ const home_jer = [
     Image: wolf1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "68",
@@ -259,7 +259,7 @@ const home_jer = [
     Image: sc1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "69",
@@ -267,7 +267,7 @@ const home_jer = [
     Image: rl1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "78",
@@ -275,7 +275,7 @@ const home_jer = [
     Image: Bayer1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "80",
@@ -283,7 +283,7 @@ const home_jer = [
     Image: sc1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   // La Liga home jerseys
   {
@@ -292,7 +292,7 @@ const home_jer = [
     Image: ath1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "71",
@@ -300,7 +300,7 @@ const home_jer = [
     Image: atm1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "72",
@@ -308,7 +308,7 @@ const home_jer = [
     Image: b1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "73",
@@ -316,7 +316,7 @@ const home_jer = [
     Image: betis1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "74",
@@ -324,7 +324,7 @@ const home_jer = [
     Image: girona1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "75",
@@ -332,7 +332,7 @@ const home_jer = [
     Image: r1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "76",
@@ -340,7 +340,7 @@ const home_jer = [
     Image: sevilla1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "77",
@@ -348,7 +348,7 @@ const home_jer = [
     Image: villa1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   //ligue1
   {
@@ -357,7 +357,7 @@ const home_jer = [
     Image: psg1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "53",
@@ -365,7 +365,7 @@ const home_jer = [
     Image: m1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "54",
@@ -373,7 +373,7 @@ const home_jer = [
     Image: monaco1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "55",
@@ -381,7 +381,7 @@ const home_jer = [
     Image: nice1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "56",
@@ -389,7 +389,7 @@ const home_jer = [
     Image: nol1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
   {
     _id: "57",
@@ -397,7 +397,7 @@ const home_jer = [
     Image: sd1,
     rating: getRandomRating(),
     type: "Home",
-    price: 600,
+    price: 700,
   },
 
 ];
@@ -408,35 +408,35 @@ const away_jer = [
     Image: ars2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {  _id: "18",
     club: "Chelsea",
     Image: che2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {  _id: "19",
     club: "Liverpool",
     Image: liv2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {  _id: "20",
     club: "Manchester City",
     Image: city2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {  _id: "21",
     club: "Manchester United",
     Image: utd2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
  
   {  _id: "22",
@@ -444,21 +444,21 @@ const away_jer = [
     Image: spur2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {  _id: "23",
     club: "Aston Villa",
     Image: aston2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {  _id: "24",
     club: "West Ham",
     Image: west2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
 
 
@@ -477,7 +477,7 @@ const away_jer = [
     Image:atlan2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
    
   },
   {  _id: "27",
@@ -485,7 +485,7 @@ const away_jer = [
     Image: juve2, 
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
  
   },
   {  _id: "28",
@@ -493,7 +493,7 @@ const away_jer = [
     Image: lazio,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
     
   },
   {  _id: "29",
@@ -501,7 +501,7 @@ const away_jer = [
     Image: milan2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
     
   },
   {  _id: "30",
@@ -509,7 +509,7 @@ const away_jer = [
     Image: nap2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
     
   },
   {  _id: "31",
@@ -517,7 +517,7 @@ const away_jer = [
     Image: roma2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
     
   },
 //la liga
@@ -529,7 +529,7 @@ const away_jer = [
       Image: ath2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
     {
       _id: "33",
@@ -537,7 +537,7 @@ const away_jer = [
       Image: r2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
     {
       _id: "34",
@@ -545,7 +545,7 @@ const away_jer = [
       Image: b2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
     {
       _id: "35",
@@ -553,7 +553,7 @@ const away_jer = [
       Image: betis2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
     {
       _id: "36",
@@ -561,7 +561,7 @@ const away_jer = [
       Image: girona2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
     {
       _id: "37",
@@ -569,7 +569,7 @@ const away_jer = [
       Image: villa2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
     {
       _id: "38",
@@ -577,7 +577,7 @@ const away_jer = [
       Image: atm2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
     {
       _id: "39",
@@ -585,7 +585,7 @@ const away_jer = [
       Image: sevilla2,
       rating: getRandomRating(),
       type: "Away",
-      price: 400,
+      price: 500,
     },
   
 
@@ -598,7 +598,7 @@ const away_jer = [
     Image: bayern2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "41",
@@ -606,7 +606,7 @@ const away_jer = [
     Image: bvb2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "42",
@@ -614,7 +614,7 @@ const away_jer = [
     Image: union2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "43",
@@ -622,7 +622,7 @@ const away_jer = [
     Image: wolf2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "44",
@@ -630,7 +630,7 @@ const away_jer = [
     Image: sc2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "45",
@@ -638,7 +638,7 @@ const away_jer = [
     Image: rl2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "79",
@@ -646,7 +646,7 @@ const away_jer = [
     Image: Bayer2,
     rating: getRandomRating(),
     type: "Away",
-    price: 600,
+    price: 700,
   },
   // Add remaining Ligue 1 away jerseys here...
   {
@@ -655,7 +655,7 @@ const away_jer = [
     Image: m2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "47",
@@ -663,7 +663,7 @@ const away_jer = [
     Image: monaco2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "48",
@@ -671,7 +671,7 @@ const away_jer = [
     Image: nice2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "49",
@@ -679,7 +679,7 @@ const away_jer = [
     Image: nol2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "50",
@@ -687,7 +687,7 @@ const away_jer = [
     Image: psg2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "51",
@@ -695,7 +695,7 @@ const away_jer = [
     Image: sr2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
 
   
@@ -705,7 +705,7 @@ const away_jer = [
     Image: monaco2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "61",
@@ -713,7 +713,7 @@ const away_jer = [
     Image: nice2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
   {
     _id: "62",
@@ -721,7 +721,7 @@ const away_jer = [
     Image: nol2,
     rating: getRandomRating(),
     type: "Away",
-    price: 400,
+    price: 500,
   },
  
   {
@@ -730,14 +730,14 @@ const away_jer = [
     Image: sc2,
     rating: getRandomRating(),
     type: "Away",
-    price: 600,
+    price: 700,
   },
   {  _id: "82",
   club: "NewCastle United",
   Image: new2,
   rating: getRandomRating(),
   type: "Away",
-  price: 600,
+  price: 700,
 },
   
 ];

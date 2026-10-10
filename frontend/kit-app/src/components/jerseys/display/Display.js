@@ -6,6 +6,7 @@ import JerseyCard from '../../common/JerseyCard';
 import Reveal from '../../common/Reveal';
 import Footer from '../../common/Footer';
 import { useCatalog } from '../../../context/CatalogContext';
+import { formatPrice } from '../../../utils/currency.js';
 import './display.css';
 
 const tabs = ['All', 'Home', 'Away'];
@@ -73,7 +74,7 @@ const Display = () => {
               <h1>{club}</h1>
               <p>
                 {jerseys.length} {jerseys.length === 1 ? 'kit' : 'kits'} available
-                {prices.length > 0 && <> · from ${Math.min(...prices)}</>}
+                {prices.length > 0 && <> · from {formatPrice(Math.min(...prices))}</>}
               </p>
             </div>
           </div>

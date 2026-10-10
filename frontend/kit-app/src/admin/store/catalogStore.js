@@ -131,3 +131,27 @@ export const deleteJersey = (id) => {
   catalog.jerseys = catalog.jerseys.filter((j) => j.id !== id);
   saveCatalog(catalog);
 };
+
+/** Update prices by kit type, explicit jersey ids, or both (intersection when both set). */
+export const bulkUpdateJerseyPrices = ({ types, price, jerseyIds }) => {
+  const catalog = getCatalog();
+  const numericPrice = Number(price);
+  if (!Number.isFinite(numericPrice) || numericPrice < 0) {
+    return catalog;
+  }
+
+  const typeSet = types?.length ? new Set(types) : null;
+  const idSet = jerseyIds?.length ? new Set(jerseyIds) : null;
+
+  catalog.jerseys = catalog.jerseys.map((j) => {
+    const matchesType = !typeSet || typeSet.has(j.type);
+    const matchesId = !idSet || idSet.has(j.id);
+    if (matchesType && matchesId) {
+      return { ...j, price: numericPrice };
+    }
+    return j;
+  });
+
+  saveCatalog(catalog);
+  return catalog;
+};

@@ -365,6 +365,36 @@
   background: rgba(255, 255, 255, 0.18);
 }
 
+.ku-admin-bulk-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--ku-line);
+  border-radius: 12px;
+  background: var(--ku-surface-2);
+}
+
+.ku-admin-bulk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ku-muted);
+}
+
+.ku-admin-bulk-field input {
+  width: 120px;
+  padding: 8px 10px;
+  border: 1px solid var(--ku-line);
+  border-radius: 8px;
+  font-family: var(--ku-font);
+  font-size: 14px;
+}
+
 /* Dashboard */
 .ku-admin-dashboard .ku-admin-lead {
   margin: 8px 0 0;

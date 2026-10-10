@@ -111,6 +111,6 @@ const buildRevenueSeries = (purchases, days) => {
 };
 
 export const formatMoney = (n) =>
-  new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(
+  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(
     n || 0
   );

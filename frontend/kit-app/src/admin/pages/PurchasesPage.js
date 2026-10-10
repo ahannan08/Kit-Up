@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAdminEvents } from '../hooks/useAdminEvents.js';
+import { formatPrice } from '../../utils/currency.js';
 
 const formatDate = (iso) => (iso ? new Date(iso).toLocaleString() : '—');
 
@@ -38,11 +39,11 @@ const PurchasesPage = () => {
                   <td>
                     {p.items?.map((i, idx) => (
                       <span key={idx}>
-                        {i.quantity}× {i.type} (${i.price}){' '}
+                        {i.quantity}× {i.type} ({formatPrice(i.price)}){' '}
                       </span>
                     ))}
                   </td>
-                  <td>${p.totalPrice}</td>
+                  <td>{formatPrice(p.totalPrice)}</td>
                   <td>{formatDate(p.completedAt)}</td>
                 </tr>
               ))

@@ -1,5 +1,6 @@
 import { User } from '../Schemas/userSchema.js';
 import { Cart } from '../Schemas/cartSchema.js';
+import { assertValidKitPrice, expectedPriceForType } from '../config/pricing.js';
 
 const addToCart = async (req, res) => {
   const { userId, jerseyId, quantity, image, type, rating, price } = req.body;
@@ -8,16 +9,23 @@ const addToCart = async (req, res) => {
     return res.status(400).json({ message: 'userId, jerseyId, and quantity are required' });
   }
 
+  const priceCheck = assertValidKitPrice(type, price);
+  if (!priceCheck.ok) {
+    return res.status(400).json({ message: priceCheck.message });
+  }
+
   const user = await User.findById(userId);
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
 
+  const unitPrice = expectedPriceForType(type);
   const parsedJerseyId = parseInt(jerseyId, 10);
   const existingItem = await Cart.findOne({ userId, jerseyId: parsedJerseyId });
 
   if (existingItem) {
     existingItem.quantity += quantity;
+    existingItem.price = unitPrice;
     await existingItem.save();
   } else {
     await Cart.create({
@@ -27,7 +35,7 @@ const addToCart = async (req, res) => {
       image,
       type,
       rating,
-      price,
+      price: unitPrice,
     });
   }
 

@@ -6,6 +6,7 @@ import Quantity from './Quantity';
 import CheckoutButton from './CheckoutButton';
 import useFetchCart from '../../hooks/useFetchCart';
 import Footer from '../common/Footer';
+import { formatPrice } from '../../utils/currency.js';
 import './cart.css';
 
 const Cart = () => {
@@ -52,7 +53,7 @@ const Cart = () => {
           </div>
           <div className="ku-cart-balance">
             <span>Balance</span>
-            <strong>${userBalance}</strong>
+            <strong>{formatPrice(userBalance)}</strong>
           </div>
         </header>
 
@@ -75,13 +76,15 @@ const Cart = () => {
                   </div>
                   <div className="ku-cart-row-body">
                     <span className={`ku-chip ku-chip--accent`}>{item.type}</span>
-                    <p className="ku-cart-row-meta">Rating {item.rating} · ${item.price} each</p>
+                    <p className="ku-cart-row-meta">Rating {item.rating} · {formatPrice(item.price)} each</p>
                     <Quantity
                       quantity={item.quantity}
                       onQuantityChange={(change) => updateQuantity(item._id, change)}
                     />
                   </div>
-                  <div className="ku-cart-row-price">${item.totalPrice ?? item.price * item.quantity}</div>
+                  <div className="ku-cart-row-price">
+                    {formatPrice(item.totalPrice ?? item.price * item.quantity)}
+                  </div>
                 </li>
               ))}
             </ul>
@@ -95,11 +98,11 @@ const Cart = () => {
                 </div>
                 <div>
                   <dt>Subtotal</dt>
-                  <dd>${subtotal}</dd>
+                  <dd>{formatPrice(subtotal)}</dd>
                 </div>
                 <div className="ku-cart-summary-total">
                   <dt>Total</dt>
-                  <dd>${subtotal}</dd>
+                  <dd>{formatPrice(subtotal)}</dd>
                 </div>
               </dl>
               <CheckoutButton cartItems={cartItems} />

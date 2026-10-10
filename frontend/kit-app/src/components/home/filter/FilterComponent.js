@@ -50,7 +50,7 @@ const FilterComponent = ({ filters, setFilters, applyFilters, resetFilters, clos
       </div>
 
       <div className="ku-filter-group">
-        <span className="ku-filter-label">Price range ($)</span>
+        <span className="ku-filter-label">Price range (₹)</span>
         <div className="ku-price-row">
           <input
             type="number"

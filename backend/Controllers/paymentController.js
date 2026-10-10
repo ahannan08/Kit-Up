@@ -9,13 +9,14 @@ const createPaymentIntent = async (req, res) => {
   }
 
   const { amount } = req.body;
-  if (!amount || amount < 50) {
-    return res.status(400).json({ message: 'amount (cents) must be at least 50' });
+  const amountPaise = Math.round(Number(amount));
+  if (!amountPaise || amountPaise < 50) {
+    return res.status(400).json({ message: 'amount (paise) must be at least 50' });
   }
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: Math.round(amount),
-    currency: 'usd',
+    amount: amountPaise,
+    currency: 'inr',
     automatic_payment_methods: { enabled: true },
   });
 

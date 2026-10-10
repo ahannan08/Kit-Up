@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Stars from './Stars';
+import { formatPrice } from '../../utils/currency.js';
 import './common.css';
 
 const JerseyCard = ({ jersey, showClub = true }) => {
@@ -32,7 +33,7 @@ const JerseyCard = ({ jersey, showClub = true }) => {
         <p className="ku-jersey-type">{jersey.type} Jersey</p>
         <div className="ku-jersey-meta">
           <Stars rating={jersey.rating} />
-          <span className="ku-jersey-price">${jersey.price}</span>
+          <span className="ku-jersey-price">{formatPrice(jersey.price)}</span>
         </div>
       </div>
     </article>
