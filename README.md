@@ -5,6 +5,10 @@ Frontend:-  REACTJS, CSS
 Backend:-  EXPRESSJS, MONGODB , NODEJS
 User Authl- JWT
 
+## Development
+
+Run the API and React app locally, env vars, smoke tests, and admin login: **[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)**.
+
 P.S:- Not really an UI guy so kept it simple. Any UI experts or Frontend enthusiast out there want to collab , i am right here , for you😄.
 
 Login:-
