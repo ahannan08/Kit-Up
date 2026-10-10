@@ -4,8 +4,12 @@ import { User } from '../Schemas/userSchema.js';
 import { Cart } from '../Schemas/cartSchema.js';
 import { Purchase } from '../Schemas/purchaseSchema.js';
 import { Jersey } from '../Schemas/jerseySchema.js';
+import { League } from '../Schemas/leagueSchema.js';
+import { Club } from '../Schemas/clubSchema.js';
+import { repairCatalogCollections } from '../seed/ensureCatalogInMongo.js';
 
-const models = [User, Cart, Purchase, Jersey];
+const catalogModels = [League, Club, Jersey];
+const models = [User, Cart, Purchase, ...catalogModels];
 
 let collectionsReady = false;
 let readyPromise = null;
@@ -25,7 +29,25 @@ export async function connectDatabase() {
 }
 
 /** Ensures collections exist and indexes are synced (MongoDB has no SQL-style migrations here). */
+async function syncModelIndexes(Model) {
+  try {
+    await Model.syncIndexes();
+  } catch (err) {
+    if (!catalogModels.includes(Model)) {
+      throw err;
+    }
+    console.warn(
+      `⚠️ Catalog index sync failed for ${Model.collection.name} (${err.message}); resetting collection`
+    );
+    await Model.collection.drop().catch(() => {});
+    await Model.createCollection();
+    await Model.syncIndexes();
+  }
+}
+
 export async function ensureCollections() {
+  await repairCatalogCollections();
+
   for (const Model of models) {
     try {
       await Model.createCollection();
@@ -34,7 +56,7 @@ export async function ensureCollections() {
         throw err;
       }
     }
-    await Model.syncIndexes();
+    await syncModelIndexes(Model);
   }
   console.log(`✅ Collections ready: ${models.map((m) => m.collection.name).join(', ')}`);
 }

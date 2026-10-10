@@ -129,6 +129,10 @@ middleware/*      → auth, asyncHandler, errors
 ## Endpoint cheat sheet
 
 ```
+GET    /api/catalog/status
+GET    /api/catalog/storefront
+POST   /api/catalog/import          (empty DB only — full catalog JSON)
+
 GET    /health
 POST   /auth/register
 POST   /auth/login

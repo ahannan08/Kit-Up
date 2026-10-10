@@ -52,7 +52,7 @@ const testimonials = [
 ];
 
 const Home = ({ searchTerm = '' }) => {
-  const { leagues, allJerseys, totalClubs } = useCatalog();
+  const { leagues, allJerseys, totalClubs, loading, error } = useCatalog();
   const location = useLocation();
   const [activeLeague, setActiveLeague] = useState(location.state?.league || 'All');
   const trackRef = useRef(null);
@@ -123,6 +123,27 @@ const Home = ({ searchTerm = '' }) => {
         </section>
         <Club searchTerm={searchTerm} activeLeague="All" setActiveLeague={() => {}} hideTabs />
         <Footer />
+      </main>
+    );
+  }
+
+  if (loading) {
+    return (
+      <main className="ku-page">
+        <div className="ku-container" style={{ padding: '4rem 1rem', textAlign: 'center' }}>
+          Loading catalog…
+        </div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="ku-page">
+        <div className="ku-container" style={{ padding: '4rem 1rem', textAlign: 'center' }}>
+          <p>Could not load kits: {error}</p>
+          <p>Check that the backend is running and REACT_APP_API_URL is set.</p>
+        </div>
       </main>
     );
   }

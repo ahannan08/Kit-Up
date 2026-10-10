@@ -15,6 +15,7 @@ const writeRaw = (catalog) => {
   window.dispatchEvent(new Event(CATALOG_UPDATED_EVENT));
 };
 
+/** Admin-only local catalog; storefront loads from GET /api/catalog/storefront. */
 export const ensureCatalogSeeded = () => {
   if (localStorage.getItem(STORAGE_KEYS.catalogSeeded)) {
     return readRaw() || buildSeedCatalog();

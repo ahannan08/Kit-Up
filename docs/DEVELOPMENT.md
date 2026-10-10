@@ -107,10 +107,18 @@ curl -X POST http://localhost:3009/auth/login \
 3. Cart → checkout (Stripe keys needed for card payment; wallet balance is handled by the API).
 4. Order history: `/myorders`.
 
+### Catalog (leagues, clubs, jerseys)
+
+- **Storefront** loads kits from **`GET /api/catalog/storefront`** (MongoDB).
+- On an **empty** database, the API ingests [`backend/seed/catalog.seed.json`](backend/seed/catalog.seed.json) on startup, or the browser runs **`POST /api/catalog/import`** once (full catalog with image URLs).
+- Check: `curl http://localhost:3009/api/catalog/status`
+- Re-seed: drop `leagues`, `clubs`, and `jerseys` collections in Atlas, restart the API, reload the site.
+- Optional: `SKIP_CATALOG_SEED=true` in `backend/.env` skips file-based seed on startup.
+
 ### Admin vs storefront
 
 - **Storefront auth** uses the backend (JWT stored in localStorage).
-- **Admin catalog and analytics** use **browser localStorage** only; they are not synced to MongoDB APIs yet.
+- **Admin** catalog UI may still use **localStorage** until write APIs are added; the public site reads from Mongo.
 
 ---
 

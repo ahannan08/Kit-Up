@@ -1,0 +1,1123 @@
+{
+  "leagues": [
+    {
+      "id": "id_league_0",
+      "name": "Premier League",
+      "country": "England",
+      "logoUrl": ""
+    },
+    {
+      "id": "id_league_1",
+      "name": "La Liga",
+      "country": "Spain",
+      "logoUrl": ""
+    },
+    {
+      "id": "id_league_2",
+      "name": "Serie A",
+      "country": "Italy",
+      "logoUrl": ""
+    },
+    {
+      "id": "id_league_3",
+      "name": "Bundesliga",
+      "country": "Germany",
+      "logoUrl": ""
+    },
+    {
+      "id": "id_league_4",
+      "name": "Ligue 1",
+      "country": "France",
+      "logoUrl": ""
+    }
+  ],
+  "clubs": [
+    {
+      "id": "id_club_0_Arsenal",
+      "leagueId": "id_league_0",
+      "name": "Arsenal",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_Chelsea",
+      "leagueId": "id_league_0",
+      "name": "Chelsea",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_Manchester_United",
+      "leagueId": "id_league_0",
+      "name": "Manchester United",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_Manchester_City",
+      "leagueId": "id_league_0",
+      "name": "Manchester City",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_Tottenham",
+      "leagueId": "id_league_0",
+      "name": "Tottenham",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_NewCastle_United",
+      "leagueId": "id_league_0",
+      "name": "NewCastle United",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_West_Ham",
+      "leagueId": "id_league_0",
+      "name": "West Ham",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_Aston_Villa",
+      "leagueId": "id_league_0",
+      "name": "Aston Villa",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_0_Liverpool",
+      "leagueId": "id_league_0",
+      "name": "Liverpool",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_FC_Barcelona",
+      "leagueId": "id_league_1",
+      "name": "FC Barcelona",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_Real_Madrid",
+      "leagueId": "id_league_1",
+      "name": "Real Madrid",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_Atletico_Madrid",
+      "leagueId": "id_league_1",
+      "name": "Atletico Madrid",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_Girona_FC",
+      "leagueId": "id_league_1",
+      "name": "Girona FC",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_Real_Betis",
+      "leagueId": "id_league_1",
+      "name": "Real Betis",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_Sevilla_FC",
+      "leagueId": "id_league_1",
+      "name": "Sevilla FC",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_Athletic_Bilbao",
+      "leagueId": "id_league_1",
+      "name": "Athletic Bilbao",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_1_Villarreal_CF",
+      "leagueId": "id_league_1",
+      "name": "Villarreal CF",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_2_Napoli",
+      "leagueId": "id_league_2",
+      "name": "Napoli",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_2_Roma",
+      "leagueId": "id_league_2",
+      "name": "Roma",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_2_Lazio",
+      "leagueId": "id_league_2",
+      "name": "Lazio",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_2_Juventus",
+      "leagueId": "id_league_2",
+      "name": "Juventus",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_2_Atalanta",
+      "leagueId": "id_league_2",
+      "name": "Atalanta",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_2_Inter_Milan",
+      "leagueId": "id_league_2",
+      "name": "Inter Milan",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_2_AC_Milan",
+      "leagueId": "id_league_2",
+      "name": "AC Milan",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_3_FC_Bayern_Munich",
+      "leagueId": "id_league_3",
+      "name": "FC Bayern Munich",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_3_Bayer_Leverkusen",
+      "leagueId": "id_league_3",
+      "name": "Bayer Leverkusen",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_3_Borussia_Dortmund",
+      "leagueId": "id_league_3",
+      "name": "Borussia Dortmund",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_3_Union_Berlin",
+      "leagueId": "id_league_3",
+      "name": "Union Berlin",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_3_FC_Schalke_04",
+      "leagueId": "id_league_3",
+      "name": "FC Schalke 04",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_3_VfL_Wolfsburg",
+      "leagueId": "id_league_3",
+      "name": "VfL Wolfsburg",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_4_Paris_Saint-Germain",
+      "leagueId": "id_league_4",
+      "name": "Paris Saint-Germain",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_4_Lyon",
+      "leagueId": "id_league_4",
+      "name": "Lyon",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_4_AS_Monaco",
+      "leagueId": "id_league_4",
+      "name": "AS Monaco",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_4_OGC_Nice",
+      "leagueId": "id_league_4",
+      "name": "OGC Nice",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_4_Marseille",
+      "leagueId": "id_league_4",
+      "name": "Marseille",
+      "crestUrl": ""
+    },
+    {
+      "id": "id_club_4_Stade_Rennais",
+      "leagueId": "id_league_4",
+      "name": "Stade Rennais",
+      "crestUrl": ""
+    }
+  ],
+  "jerseys": [
+    {
+      "id": "id_seed_1",
+      "_id": "1",
+      "legacyId": 1,
+      "clubName": "Arsenal",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Arsenal Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_2",
+      "_id": "2",
+      "legacyId": 2,
+      "clubName": "Chelsea",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Chelsea Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_3",
+      "_id": "3",
+      "legacyId": 3,
+      "clubName": "Manchester United",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Manchester United Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_4",
+      "_id": "4",
+      "legacyId": 4,
+      "clubName": "Manchester City",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Manchester City Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_5",
+      "_id": "5",
+      "legacyId": 5,
+      "clubName": "Tottenham",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Tottenham Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_6",
+      "_id": "6",
+      "legacyId": 6,
+      "clubName": "NewCastle United",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "NewCastle United Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_7",
+      "_id": "7",
+      "legacyId": 7,
+      "clubName": "West Ham",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "West Ham Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_8",
+      "_id": "8",
+      "legacyId": 8,
+      "clubName": "Aston Villa",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Aston Villa Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_9",
+      "_id": "9",
+      "legacyId": 9,
+      "clubName": "Liverpool",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Liverpool Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_10",
+      "_id": "10",
+      "legacyId": 10,
+      "clubName": "AC Milan",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "AC Milan Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_11",
+      "_id": "11",
+      "legacyId": 11,
+      "clubName": "Atalanta",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Atalanta Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_12",
+      "_id": "12",
+      "legacyId": 12,
+      "clubName": "Juventus",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Juventus Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_13",
+      "_id": "13",
+      "legacyId": 13,
+      "clubName": "Lazio",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Lazio Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_14",
+      "_id": "14",
+      "legacyId": 14,
+      "clubName": "Inter Milan",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Inter Milan Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_15",
+      "_id": "15",
+      "legacyId": 15,
+      "clubName": "Napoli",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Napoli Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_16",
+      "_id": "16",
+      "legacyId": 16,
+      "clubName": "Roma",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Roma Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_64",
+      "_id": "64",
+      "legacyId": 64,
+      "clubName": "Borussia Dortmund",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Borussia Dortmund Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_65",
+      "_id": "65",
+      "legacyId": 65,
+      "clubName": "FC Bayern Munich",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "FC Bayern Munich Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_66",
+      "_id": "66",
+      "legacyId": 66,
+      "clubName": "Union Berlin",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Union Berlin Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_67",
+      "_id": "67",
+      "legacyId": 67,
+      "clubName": "VfL Wolfsburg",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "VfL Wolfsburg Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_68",
+      "_id": "68",
+      "legacyId": 68,
+      "clubName": "SC Freiburg",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "SC Freiburg Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_69",
+      "_id": "69",
+      "legacyId": 69,
+      "clubName": "RasenBallsport Leipzig",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "RasenBallsport Leipzig Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_78",
+      "_id": "78",
+      "legacyId": 78,
+      "clubName": "Bayer Leverkusen",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Bayer Leverkusen Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_80",
+      "_id": "80",
+      "legacyId": 80,
+      "clubName": "FC Schalke 04",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "FC Schalke 04 Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_70",
+      "_id": "70",
+      "legacyId": 70,
+      "clubName": "Athletic Bilbao",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Athletic Bilbao Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_71",
+      "_id": "71",
+      "legacyId": 71,
+      "clubName": "Atletico Madrid",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Atletico Madrid Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_72",
+      "_id": "72",
+      "legacyId": 72,
+      "clubName": "FC Barcelona",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "FC Barcelona Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_73",
+      "_id": "73",
+      "legacyId": 73,
+      "clubName": "Real Betis",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Real Betis Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_74",
+      "_id": "74",
+      "legacyId": 74,
+      "clubName": "Girona FC",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Girona FC Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_75",
+      "_id": "75",
+      "legacyId": 75,
+      "clubName": "Real Madrid",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Real Madrid Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_76",
+      "_id": "76",
+      "legacyId": 76,
+      "clubName": "Sevilla FC",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Sevilla FC Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_77",
+      "_id": "77",
+      "legacyId": 77,
+      "clubName": "Villarreal CF",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Villarreal CF Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_52",
+      "_id": "52",
+      "legacyId": 52,
+      "clubName": "Paris Saint-Germain",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Paris Saint-Germain Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_53",
+      "_id": "53",
+      "legacyId": 53,
+      "clubName": "Marseille",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Marseille Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_54",
+      "_id": "54",
+      "legacyId": 54,
+      "clubName": "AS Monaco",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "AS Monaco Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_55",
+      "_id": "55",
+      "legacyId": 55,
+      "clubName": "OGC Nice",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "OGC Nice Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_56",
+      "_id": "56",
+      "legacyId": 56,
+      "clubName": "Lyon",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Lyon Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_57",
+      "_id": "57",
+      "legacyId": 57,
+      "clubName": "Stade Rennais",
+      "type": "Home",
+      "price": 700,
+      "rating": 4,
+      "description": "Stade Rennais Home kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_17",
+      "_id": "17",
+      "legacyId": 17,
+      "clubName": "Arsenal",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Arsenal Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_18",
+      "_id": "18",
+      "legacyId": 18,
+      "clubName": "Chelsea",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Chelsea Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_19",
+      "_id": "19",
+      "legacyId": 19,
+      "clubName": "Liverpool",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Liverpool Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_20",
+      "_id": "20",
+      "legacyId": 20,
+      "clubName": "Manchester City",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Manchester City Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_21",
+      "_id": "21",
+      "legacyId": 21,
+      "clubName": "Manchester United",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Manchester United Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_22",
+      "_id": "22",
+      "legacyId": 22,
+      "clubName": "Tottenham",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Tottenham Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_23",
+      "_id": "23",
+      "legacyId": 23,
+      "clubName": "Aston Villa",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Aston Villa Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_24",
+      "_id": "24",
+      "legacyId": 24,
+      "clubName": "West Ham",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "West Ham Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_25",
+      "_id": "25",
+      "legacyId": 25,
+      "clubName": "AC Milan",
+      "type": "Away",
+      "price": 1000,
+      "rating": 4,
+      "description": "AC Milan Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_26",
+      "_id": "26",
+      "legacyId": 26,
+      "clubName": "Atalanta",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Atalanta Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_27",
+      "_id": "27",
+      "legacyId": 27,
+      "clubName": "Juventus",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Juventus Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_28",
+      "_id": "28",
+      "legacyId": 28,
+      "clubName": "Lazio",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Lazio Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_29",
+      "_id": "29",
+      "legacyId": 29,
+      "clubName": "Inter Milan",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Inter Milan Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_30",
+      "_id": "30",
+      "legacyId": 30,
+      "clubName": "Napoli",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Napoli Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_31",
+      "_id": "31",
+      "legacyId": 31,
+      "clubName": "Roma",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Roma Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_32",
+      "_id": "32",
+      "legacyId": 32,
+      "clubName": "Athletic Bilbao",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Athletic Bilbao Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_33",
+      "_id": "33",
+      "legacyId": 33,
+      "clubName": "Real Madrid",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Real Madrid Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_34",
+      "_id": "34",
+      "legacyId": 34,
+      "clubName": "FC Barcelona",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "FC Barcelona Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_35",
+      "_id": "35",
+      "legacyId": 35,
+      "clubName": "Real Betis",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Real Betis Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_36",
+      "_id": "36",
+      "legacyId": 36,
+      "clubName": "Girona FC",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Girona FC Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_37",
+      "_id": "37",
+      "legacyId": 37,
+      "clubName": "Villarreal CF",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Villarreal CF Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_38",
+      "_id": "38",
+      "legacyId": 38,
+      "clubName": "Atletico Madrid",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Atletico Madrid Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_39",
+      "_id": "39",
+      "legacyId": 39,
+      "clubName": "Sevilla FC",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Sevilla FC Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_40",
+      "_id": "40",
+      "legacyId": 40,
+      "clubName": "FC Bayern Munich",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "FC Bayern Munich Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_41",
+      "_id": "41",
+      "legacyId": 41,
+      "clubName": "Borussia Dortmund",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Borussia Dortmund Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_42",
+      "_id": "42",
+      "legacyId": 42,
+      "clubName": "Union Berlin",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Union Berlin Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_43",
+      "_id": "43",
+      "legacyId": 43,
+      "clubName": "VfL Wolfsburg",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "VfL Wolfsburg Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_44",
+      "_id": "44",
+      "legacyId": 44,
+      "clubName": "SC Freiburg",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "SC Freiburg Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_45",
+      "_id": "45",
+      "legacyId": 45,
+      "clubName": "RasenBallsport Leipzig",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "RasenBallsport Leipzig Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_79",
+      "_id": "79",
+      "legacyId": 79,
+      "clubName": "Bayer Leverkusen",
+      "type": "Away",
+      "price": 700,
+      "rating": 4,
+      "description": "Bayer Leverkusen Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_46",
+      "_id": "46",
+      "legacyId": 46,
+      "clubName": "Marseille",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Marseille Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_47",
+      "_id": "47",
+      "legacyId": 47,
+      "clubName": "AS Monaco",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "AS Monaco Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_48",
+      "_id": "48",
+      "legacyId": 48,
+      "clubName": "OGC Nice",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "OGC Nice Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_49",
+      "_id": "49",
+      "legacyId": 49,
+      "clubName": "Lyon",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Lyon Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_50",
+      "_id": "50",
+      "legacyId": 50,
+      "clubName": "Paris Saint-Germain",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Paris Saint-Germain Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_51",
+      "_id": "51",
+      "legacyId": 51,
+      "clubName": "Stade Rennais",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Stade Rennais Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_60",
+      "_id": "60",
+      "legacyId": 60,
+      "clubName": "AS Monaco",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "AS Monaco Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_61",
+      "_id": "61",
+      "legacyId": 61,
+      "clubName": "OGC Nice",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "OGC Nice Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_62",
+      "_id": "62",
+      "legacyId": 62,
+      "clubName": "Nantes",
+      "type": "Away",
+      "price": 500,
+      "rating": 4,
+      "description": "Nantes Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_81",
+      "_id": "81",
+      "legacyId": 81,
+      "clubName": "FC Schalke 04",
+      "type": "Away",
+      "price": 700,
+      "rating": 4,
+      "description": "FC Schalke 04 Away kit — official-style replica.",
+      "imageUrl": ""
+    },
+    {
+      "id": "id_seed_82",
+      "_id": "82",
+      "legacyId": 82,
+      "clubName": "NewCastle United",
+      "type": "Away",
+      "price": 700,
+      "rating": 4,
+      "description": "NewCastle United Away kit — official-style replica.",
+      "imageUrl": ""
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import clubRouter from './Routes/clubRoutes.js';
 import paymentRouter from './Routes/paymentRoutes.js';
 import cartRouter from './Routes/cartRoutes.js';
 import orderRouter from './Routes/orderRoutes.js';
+import catalogRouter from './Routes/catalogRoutes.js';
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
 import { ensureDatabaseReady } from './config/database.js';
 
@@ -41,6 +42,7 @@ app.use('/api/clubs', clubRouter);
 app.use('/api/payment', paymentRouter);
 app.use('/api', cartRouter);
 app.use('/order', orderRouter);
+app.use('/api/catalog', catalogRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
