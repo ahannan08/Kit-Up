@@ -1,13 +1,12 @@
 import app from './app.js';
 import { assertRequiredEnv, env } from './config/env.js';
-import { connectDatabase, ensureCollections } from './config/database.js';
+import { ensureDatabaseReady } from './config/database.js';
 
 assertRequiredEnv();
 
 async function start() {
   try {
-    await connectDatabase();
-    await ensureCollections();
+    await ensureDatabaseReady();
 
     app.listen(env.port, () => {
       console.log(`🚀 Server listening on http://localhost:${env.port}`);
